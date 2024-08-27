@@ -17,3 +17,4 @@
 | Gaurav Ghodinde | CSB    | lcb2023032  | gauravghodinde@gmail.com     | GauravGhodinde    |
 | Akhand Pratap Dhiryan | CSAI | lci2023022 | akhandp900@gmail.com        | Akhandp10         |
 | Gagan Mishra    | CSAI   | lci2023038  | simonsimple305@gmail.com     | GaganMishra305    |
+| Tanmay Janardhan Deshmukh | CSB | lcb2023011 | 2005.tanmaydeshmukh@gmail.com | NeonKazuha |
