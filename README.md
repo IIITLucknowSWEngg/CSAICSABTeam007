@@ -1,10 +1,8 @@
 # CSAICSBTeam007
 
-## Project Idea
-### YouTube Clone
+## Project Idea: YouTube Clone
 
-## Team Name
-# Nexum
+## Team Name: Nexum
 
 ## Members
 
