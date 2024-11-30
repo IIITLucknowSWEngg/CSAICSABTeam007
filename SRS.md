@@ -149,3 +149,33 @@ The user interface will be responsive, designed for mobile-first, and offer feat
 - Third-party APIs (e.g., for video CDN, payments, and social login) will be integrated into the platform.
 
 ---
+
+Here's the description template for your YouTube clone. You can replace the placeholders with your specific images:
+
+---
+
+## Appendix B: Use Case Diagram  
+Below is the Use Case Diagram for the happy path of the YouTube clone application. It illustrates the primary actors (Viewer, Content Creator, and Admin) and their interactions with the system for key processes like User Registration, Video Upload, Video Viewing, Commenting, and Admin Management.
+
+![Use Case Diagram](usecase.png)
+
+
+The diagram details the step-by-step flow for each interaction, representing the standard sequence of actions without any exception handling (happy path):  
+- **Actors**:  
+  - **Viewer**: Registers, searches for videos, watches videos, likes/dislikes, comments, and subscribes to channels.  
+  - **Content Creator**: Uploads videos, manages their channel, responds to comments, and reviews analytics.  
+  - **Admin**: Monitors activities, manages users, and enforces content guidelines.  
+
+---
+
+## Abuse Case Diagram  
+
+![Abuse Case Diagram](AbuseCaseDiagram.png)  
+
+---
+
+## Error Case Diagram  
+
+![Error Case Diagram](ErrorCaseDiagram.png)
+
+---
