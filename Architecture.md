@@ -120,7 +120,7 @@ Rel(transcode, queue, "Subscribes", "AMQP")
 ```
 
 # Component Diagram 
-
+## Creator Features
 ![component](https://github.com/user-attachments/assets/4c337d10-acb5-44eb-bd09-846a81350ee1)
 
 ```
@@ -188,6 +188,122 @@ Rel(ads, ad_network, "Serves", "API")
 ```
 
 
+## Viewer Features
+![component](https://www.plantuml.com/plantuml/png/ZLHDR-Cs4BthLx0-9K0INthgQLCdkmdW94RiTD6JCIR74hiKQN16SRr5_tj9ob8OoGPwqb1uy_ZcW-yBCNXkQYCcCrVld4NBuav3wQ4Mr-8FZNlquYi2DnvfKloYhJIDGb4nx-YtwTJ3_gRKN3MRXj1BPnajtqXNJtS6R6I-9bP6RwQpNwyNyTVRqtnQ0p7wy6lTttgp2zYYcD_--VAsMdz_N3siv_VVxf_lBYuBrcnG_0-1HJ5pba5RzElVNMCL-CF5Uy9SYScmcalnJo64-22-g5oD0VWGFW66QX8EhmYIOx10Jyw2qJzHYMEbmcEejKQhWBMpayi1OMZ2uNYtGYSMwVY9zGcL1X5n6v0_HWJQCle03SZ7DeptY2UmKBPCpqxXpLyKmxd-WNGbMaKS8gh08ur8Uz59I5w0kBUbjfZAFN3bR8ncnrgfAKka21jJ4eANLG0lKo2Is2r8x8lDcPGcwTxH7yODyswhJHp26w4NY_PuSWw2a5dRiXCpODe3osfjW5F_lyUJc0CFsh-4zsoQHXEF95MQsFb3J_BGdWUzZykLCR4FqmpYJcv4l8PY9SSu6sVMguROrJsXTCPW6lwPUgdPaFHwbo2niknyPbzc5LYBHcm3jzkVKciTwwsMq94-PsSn2uWHvzjE0IC9i4g0GSzdv7PB6cMqeLWUYB4UyDrfaWrHlAzEHKJeYOs6jZTT1oD-5MTm-f4aUTtREjzJvVRME51Hnp4yqygNxTPeYzsuHW91IYJI6sqqnrMwpS-z9UKB40UOZ8-kUdj8zDwPAFVVecWRjhx_ExHJsTZ9k-TFpmoDRbzP3WKBvi1QKfJHnTd3ZmyltzyijJRHiK1MiTGvWhSHCdOHIYaXjtX5StJLt7I-8iiAwPEZT0vdmOJ4Zxosiha3HNrteqUlLejbTqDdiorsoHwX9l4UFJV7vj31G6BFjhfiF0wLnApCXlDDIwimJ1ZWipr_0AlCQVxEFbE3lo6Jy61Z_nFwTl7O0Nj__72bjEPZ4Hasjy9SzTc4tAHUV0bM_pofUsWwGxjOUHq6x8UfsNJpPMmBoPzbLdq-kppf5NVECuc6eCGF-1UqggdDVm00)
+```
+@startuml "Component Diagram - Viewer Features"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+title Component Diagram - Viewer Features
+
+Container_Boundary(viewer, "Viewer Features") {
+    Component(home, "Home Feed", "React", "Personalized content recommendation")
+    Component(player, "Video Player", "React", "Media playback")
+    Component(interact, "Interaction Manager", "Node.js", "Likes, comments, shares")
+    Component(recommend, "Recommendation Engine", "Python", "Content suggestions")
+    Component(search, "Search Interface", "React", "Content discovery")
+    Component(profile, "User Profile", "React", "Personal settings")
+    
+    Component(watch_later, "Watch Later", "React", "Saved content list")
+    Component(history, "Watch History", "Node.js", "Viewed content tracking")
+    Component(playlists, "Playlist Manager", "React", "Custom content collections")
+    
+    Component(subscriptions, "Subscription Manager", "Node.js", "Channel following")
+    Component(notifications, "Notification Center", "Node.js", "Updates and alerts")
+    
+    Component(comments, "Comment System", "Node.js", "Discussion management")
+    Component(reactions, "Reaction Tracker", "Node.js", "Likes and interactions")
+    
+    Component(download, "Download Manager", "Node.js", "Offline content")
+    Component(accessibility, "Accessibility Features", "React", "Subtitles, playback controls")
+}
+
+System_Ext(cdn, "CDN", "Content delivery")
+System_Ext(analytics, "Analytics Engine", "User tracking")
+System_Ext(ml, "Machine Learning", "Recommendation system")
+
+Rel(home, recommend, "Fetches suggestions", "Internal")
+Rel(home, cdn, "Loads content", "HTTPS")
+
+Rel(player, cdn, "Streams video", "HTTPS")
+Rel(player, accessibility, "Configures", "Internal")
+
+Rel(interact, reactions, "Manages", "Internal")
+Rel(interact, comments, "Handles", "Internal")
+
+Rel(search, ml, "Gets rankings", "API")
+
+Rel(profile, history, "Tracks", "Internal")
+Rel(profile, watch_later, "Manages", "Internal")
+Rel(profile, playlists, "Organizes", "Internal")
+
+Rel(subscriptions, notifications, "Triggers", "Internal")
+
+Rel(home, analytics, "Tracks interactions", "API")
+Rel(player, analytics, "Reports usage", "API")
+@enduml
+```
+
+
+## Advertiser Features
+![component](https://www.plantuml.com/plantuml/png/ZLHDJoCv4xxdLzIR4qWlSDdJdYOa38i4J4HWLdjgLTf5npl-QBcgOQBL_lUrswGndPxHtEoowwcFf-hvn891EcjWllIszOwSm4fZ4z326IpK2mNHJ04-4qeNYEUp_sbNcquHx4HQ_ltY8k3hUQDbrsqxfb1x9n7blFRseZNe4lePYp9wUx7yxMoTJ4ztjnSMMIX4KpL4Fc_ZtzdiTl7NbwV7wi-Rnp-gswlhg_lLoUbCj1Y2NqnoDbjw9wWTXUhITqvXs9_WyE__C9-gx1J-cG70Uv2J6csBkd6LHOTDxxXyCy5TDisZxTuhEl-Rvpqk79oW3eIYlPkVZc05GqEYNPCSEgN9rGIF1sE2MUzbvrqwhSZwM6YxqpKm6Qed4RUTYixn-sL_W8KnlaRnu_GsBJaLOq1YANXp3AHLUi-LNEOBRFOiPCULTdqga5jZe_CRs0WnT-65AfPOgayjVBF0fhSai0V2MWxzomC4YbWtnwMYghhMU5JvzuAPv0TaVDMAFA1Je6ryXkp7ntoGRGqAPSJ7jnlSwct0iF-GtphGMKwC51ZS-qvukcvqQFQYQyweQmhFFbXCLA-GTrkFGHNGnMHf5_5tSfod9GaPy2wVu35W_Ot2U6G4jI45RH6pJuVrCMXizmi5rjwb78PB2LsqzE7B3LX2xi9FADzgO_8GNURJz0IjSPyme0s-9kRuxoWvxLwyhZFMpU4yWlciNQnGeu50hGyoXTFcK9Mbs2HLnBxh3UNyP3wAt5NVpX-mNCUJqQd3cURbS8VbZewvMNkZwpt49kjdNK_B0tTjgkEZIcsoSLJxicFnbW8WisP9SIFSlxDPRdXrzVszzWQ5Nd5V57-TBH-RA04TOx_RiUOI25NbI5vz-9PhlS-NURufpHBqjiibbNxMLANYtTs-QnriABpec7IXXCFyboZ5FbNqFVKcsYX46omE3mcaN3D94vodOVP0PaBDoxHMzAmTCU1R6lD-v7ACY30DCEZkXeJ1QAk5VyrnqDayUfmiOzViEzRFKW2Vig8b-cawyjYxqBed9Xxkax6B_en8l2RXWQYUlVNDmQjGldV5MZHDe2O50eM24waEVyTCfyt0G5pgsIZae3YZHH_QEuvN-fGYSqsEGfzb5fEVEaviLfOouiDRsPlfIVYW85_HQ3N1nhJhXuLS7VQFE3wCuXOgNvBoa6k4gEgZW9_8gSwQ_m00)
+```
+@startuml "Component Diagram - Advertiser Features"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+title Component Diagram - Advertiser Features
+
+Container_Boundary(advertiser, "Advertiser Features") {
+    Component(campaign_manager, "Campaign Manager", "Node.js", "Ad campaign creation")
+    Component(targeting, "Audience Targeting", "Python", "Demographic selection")
+    Component(budget, "Budget Allocator", "Node.js", "Spending control")
+    Component(bidding, "Ad Bidding System", "Node.js", "Auction management")
+    
+    Component(creative_studio, "Creative Studio", "React", "Ad content design")
+    Component(ad_upload, "Ad Asset Manager", "Node.js", "Video and image uploads")
+    Component(template, "Ad Template Library", "React", "Pre-designed layouts")
+    
+    Component(analytics, "Ad Performance Dashboard", "React", "Campaign insights")
+    Component(metrics, "Metrics Tracker", "Python", "Detailed performance analysis")
+    Component(conversion, "Conversion Tracker", "Node.js", "ROI measurement")
+    
+    Component(billing, "Billing System", "Node.js", "Payment processing")
+    Component(invoicing, "Invoicing", "Node.js", "Financial reporting")
+    Component(payment_method, "Payment Method Manager", "React", "Billing details")
+    
+    Component(compliance, "Ad Compliance Checker", "Python", "Policy verification")
+    Component(support, "Advertiser Support", "Node.js", "Customer assistance")
+}
+
+System_Ext(payment_gateway, "Payment Gateway", "Financial transactions")
+System_Ext(ad_network, "Ad Network", "Ad distribution")
+System_Ext(ml_targeting, "ML Targeting Service", "Audience insights")
+System_Ext(analytics_ext, "External Analytics", "Performance tracking")
+
+Rel(campaign_manager, targeting, "Defines audience", "Internal")
+Rel(campaign_manager, budget, "Sets limits", "Internal")
+Rel(campaign_manager, bidding, "Manages bids", "Internal")
+
+Rel(creative_studio, ad_upload, "Uploads assets", "Internal")
+Rel(creative_studio, template, "Uses templates", "Internal")
+
+Rel(targeting, ml_targeting, "Gets insights", "API")
+
+Rel(analytics, metrics, "Aggregates data", "Internal")
+Rel(metrics, analytics_ext, "Compares performance", "API")
+
+Rel(billing, payment_method, "Manages", "Internal")
+Rel(billing, invoicing, "Generates reports", "Internal")
+Rel(billing, payment_gateway, "Processes payments", "API")
+
+Rel(campaign_manager, compliance, "Validates", "Internal")
+Rel(campaign_manager, ad_network, "Distributes ads", "API")
+
+Rel(conversion, metrics, "Reports ROI", "Internal")
+@enduml
+```
 
 
 # Deployment Diagram 
