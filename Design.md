@@ -23,7 +23,7 @@ The system design follows these key architectural principles:
 - Containerization for consistent deployment
 - Cloud-native implementation
 
-<!-- ## 2. System Architecture
+## 2. System Architecture
 ### 2.1 Architecture Overview
 The YouTube clone will utilize a distributed, microservices-based architecture with the following key layers:
 
@@ -58,7 +58,7 @@ The platform will include advanced capabilities:
 - WebSocket-based live streaming
 - Real-time commenting system
 - Instant notifications
-- Interactive live events support -->
+- Interactive live events support
 
 ## 4. Module Design
 ### 4.1 Frontend Application (Web/Mobile)
