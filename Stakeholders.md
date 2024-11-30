@@ -23,4 +23,6 @@ This document outlines the key stakeholders involved in the YouTube clone projec
 | Monetization Team                 | Designs strategies for revenue generation.                           | Developing ad placement strategies, exploring premium features and subscriptions.                      | High — Financial growth and sustainability. |
 | Community Managers               | Engage with the platform community.                                 | Fostering community culture, managing forums and social media, collecting feedback.                    | Medium — Enhances user engagement and satisfaction. |
 | Security Specialists      | Protect the platform from cyber threats and abuse.                  | Implementing security measures, monitoring for breaches, ensuring data integrity and user privacy.     | High — Ensures platform security and user trust. |
+| Customer Support Team      | Assists users with issues and inquiries.                             | Handling complaints and queries, resolving issues, providing feedback to development teams.            | Medium — Impacts user retention and satisfaction. |
+| Accessibility Experts     | Ensure platform inclusivity for users with disabilities.            | Reviewing platform for accessibility, ensuring compliance with standards.                             | Medium — Expands usability and inclusivity. |
 
