@@ -26,6 +26,14 @@ The purpose of this URD is to define the key features and functionalities expect
 - **Description**: Users responsible for managing content, ensuring it follows community guidelines.
 - **Main Tasks**: Review flagged content, remove inappropriate videos, handle reports.
 
+### 3.5. Premium Subscriber
+- **Description**: Users who pay for an ad-free, enhanced experience.
+- **Main Tasks**: Watch videos without ads, access exclusive content, and download videos for offline viewing.
+
+### 3.6. Community Member
+- **Description**: Users who actively participate in discussions, polls, and community posts created by channels.
+- **Main Tasks**: Engage in discussions, vote in polls, and access community updates.
+
 ## 4. Functional Requirements
 
 ### 4.1. User Registration and Authentication
@@ -80,6 +88,49 @@ The purpose of this URD is to define the key features and functionalities expect
   - View counts, audience demographics, engagement metrics.
   - Ad campaign performance metrics for advertisers.
 
+### 4.9. Live Streaming and Engagement
+- **Description**: Content creators should be able to host live streams to interact with their audience in real time.
+- **Requirements**:
+  - Real-time comments and reactions.
+  - Monetization tools (e.g., Super Chats, memberships).
+  - Stream scheduling and notifications for viewers.
+
+### 4.10. Video Download for Offline Viewing
+- **Description**: Premium subscribers can download videos to watch offline.
+- **Requirements**:
+  - Downloads available in multiple quality options.
+  - Expiry time for downloaded videos (e.g., 30 days).
+
+### 4.11. Community Features
+- **Description**: Channels can create community posts to interact with their audience outside video uploads.
+- **Requirements**:
+  - Create text/image posts, polls, and announcements.
+  - Allow viewers to like, comment, and share community posts.
+
+### 4.12. Parental Controls
+- **Description**: Parents can restrict content for child accounts.
+- **Requirements**:
+  - Filter age-inappropriate content.
+  - Set daily viewing limits.
+
+### 4.13. Collaborative Playlists
+- **Description**: Users can collaborate on shared playlists.
+- **Requirements**:
+  - Invite others to add/edit videos in a playlist.
+  - Privacy controls for playlists (public, private, shared).
+
+### 4.14. AI-Powered Translations and Captions
+- **Description**: Automatically generate subtitles and translations for videos.
+- **Requirements**:
+  - Multilingual support for captions.
+  - Creator tools to edit auto-generated captions.
+
+### 4.15. Advanced Search with AI Assistance
+- **Description**: Leverage AI to enhance search relevance and discoverability.
+- **Requirements**:
+  - Predictive search suggestions.
+  - AI-curated recommendations based on past behavior.
+
 ## 5. Non-Functional Requirements
 
 ### 5.1. Scalability
@@ -94,13 +145,31 @@ The purpose of this URD is to define the key features and functionalities expect
 ### 5.4. Usability
 - The interface must be user-friendly and intuitive for all user types (viewers, creators, advertisers).
 
+### 5.5. Accessibility
+- Ensure platform accessibility for users with disabilities.
+- Provide screen reader compatibility, keyboard navigation, and customizable subtitles.
+
+### 5.6. Energy Efficiency
+- Optimize streaming and downloading features to minimize device battery consumption.
+
+### 5.7. Data Localization
+- Allow users to store and manage data within their country, adhering to local data privacy laws.
+
 ## 6. Glossary
 
 - **Viewer**: A user who watches videos on YouTube.
 - **Content Creator**: A user who uploads and manages video content.
 - **Advertiser**: A user who promotes content or products through ads.
 - **Moderator**: A user who manages and monitors content for compliance with guidelines.
+- **Premium Subscriber**: A user paying for enhanced platform features.
+- **Community Member**: A user actively participating in discussions, polls, and posts.
+- **Super Chat**: A monetization feature allowing viewers to highlight messages during live streams.
 
-## 7. Conclusion
+## 7. Future Enhancements
+- **Augmented Reality (AR) Experiences**: Integrate AR features for interactive content.
+- **360° Videos**: Support immersive, interactive video formats.
+- **Content Moderation AI**: Use advanced AI to detect and flag inappropriate content automatically.
+
+## 8. Conclusion
 
 This URD outlines the core requirements for YouTube's successful functioning, ensuring it meets the diverse needs of viewers, content creators, advertisers, and moderators. Regular updates and iterations will refine the platform based on evolving user needs.
