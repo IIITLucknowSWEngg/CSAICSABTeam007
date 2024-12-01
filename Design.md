@@ -567,6 +567,87 @@ rectangle YouTube {
 
 ## 6. Interface Design
 
+![interface design](Interface-design.png)
+
+```plantuml
+@startuml
+skinparam linetype polyline
+title YouTube Clone - Interface Design
+
+rectangle "Authentication Screens" {
+    (Login Screen) as Login
+    (Registration Screen) as Register
+    (Password Reset) as PasswordReset
+}
+
+rectangle "Main Application Screens" {
+    (Home/Feed Screen) as Home
+    (Video Player Screen) as VideoPlayer
+    (Channel Page) as Channel
+    (Search Results) as Search
+    (Playlist Screen) as Playlist
+    (Trending Screen) as Trending
+    (Subscriptions Screen) as Subscriptions
+}
+
+rectangle "Creator Studio Screens" {
+    (Video Upload) as Upload
+    (Video Management) as VideoManage
+    (Channel Customization) as ChannelCustom
+    (Analytics Dashboard) as Analytics
+    (Monetization) as Monetization
+}
+
+rectangle "User Profile Screens" {
+    (User Profile) as Profile
+    (Account Settings) as Settings
+    (Watch History) as History
+    (Liked Videos) as LikedVideos
+}
+
+rectangle "Navigation Components" {
+    (Sidebar) as Sidebar
+    (Top Navigation Bar) as TopNav
+    (Search Bar) as SearchBar
+    (Mobile Navigation) as MobileNav
+}
+
+rectangle "UI Components" {
+    (Video Thumbnail) as Thumbnail
+    (Subscription Button) as SubButton
+    (Interaction Controls) as InteractControls
+    (Comment Section) as Comments
+    (Recommended Videos) as Recommendations
+}
+
+' Navigation Flows
+Login --> Home
+Register --> Home
+Home --> VideoPlayer
+VideoPlayer --> Channel
+SearchBar --> Search
+Sidebar --> Home
+Sidebar --> Subscriptions
+Sidebar --> Trending
+Channel --> Upload
+Channel --> VideoManage
+
+note right of "UI Components"
+    Design Principles:
+    - Responsive Design
+    - Mobile-First Approach
+    - Consistent UI/UX
+    - Accessibility
+    - Performance Optimized
+
+    Breakpoints:
+    - Mobile: <600px
+    - Tablet: 600-1024px
+    - Desktop: >1024px
+end note
+@enduml
+```
+
 ### 6.1 API Design
 Below are some of the REST API endpoints for interaction:
 
