@@ -309,3 +309,152 @@ describe('Content Creator Earnings View', () => {
   });
 });
 ```
+---
+
+## Feature: Content Creator - Edit Video
+### Scenario: Content Creator edits a video after upload
+
+#### Given:
+- The content creator is logged in
+- The content creator has uploaded at least one video
+- The content creator is on the *YouTube Studio* page
+
+#### When:
+- The content creator clicks on the "Edit" button for a specific video
+- The content creator changes the title, description, or tags
+- The content creator clicks "Save"
+
+#### Then:
+- The video should be updated with the new title, description, or tags
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const studioPage = require('../pages/studioPage');
+
+describe('Content Creator - Edit Video', function() {
+  beforeEach(async function() {
+    studioPage.open();
+    studioPage.login('contentcreator@example.com', 'securePassword');
+  });
+
+  it('should allow editing of video details', async function() {
+    // Find first uploaded video
+    const firstVideo = studioPage.getFirstUploadedVideo();
+
+    // Original video details
+    const originalTitle = await firstVideo.getTitle();
+
+    // Edit video details
+    const newDetails = {
+      title: `Updated ${originalTitle}`,
+      description: 'Updated video description',
+      tags: ['Updated', 'EditedVideo']
+    };
+
+    firstVideo.edit(newDetails);
+
+    // Verify updated details
+    const updatedVideo = studioPage.getFirstUploadedVideo();
+    expect(await updatedVideo.getTitle()).to.equal(newDetails.title);
+    expect(await updatedVideo.getDescription()).to.equal(newDetails.description);
+    expect(await updatedVideo.getTags()).to.deep.equal(newDetails.tags);
+  });
+
+  it('should handle editing with invalid inputs', async function() {
+    const firstVideo = studioPage.getFirstUploadedVideo();
+
+    const invalidDetails = {
+      title: '', // Empty title
+      description: 'a'.repeat(5001) // Extremely long description
+    };
+
+    // Attempt to edit with invalid details
+    const editResult = firstVideo.edit(invalidDetails);
+
+    expect(editResult.success).to.be.false;
+    expect(editResult.errorMessage).to.exist;
+  });
+});
+```
+
+```javascript
+// pages/studioPage.js
+class StudioPage {
+  constructor() {
+    this.selectors = {
+      videoList: '#video-list',
+      editButton: '[data-testid="edit-video"]',
+      titleInput: '#video-title',
+      descriptionInput: '#video-description',
+      tagsInput: '#video-tags',
+      saveButton: '[data-testid="save-video"]'
+    };
+  }
+
+  open() {
+    browser.url('https://studio.youtube.com/videos');
+  }
+
+  login(username, password) {
+    // Login implementation
+  }
+
+  getFirstUploadedVideo() {
+    const videoElements = browser.$$(this.selectors.videoList);
+    return new VideoItem(videoElements[0]);
+  }
+}
+
+class VideoItem {
+  constructor(element) {
+    this.element = element;
+  }
+
+  async getTitle() {
+    return this.element.$(this.selectors.titleInput).getValue();
+  }
+
+  async getDescription() {
+    return this.element.$(this.selectors.descriptionInput).getValue();
+  }
+
+  async getTags() {
+    return this.element.$(this.selectors.tagsInput).getValue().split(',');
+  }
+
+  edit(newDetails) {
+    this.element.$(this.selectors.editButton).click();
+
+    if (newDetails.title) {
+      const titleInput = this.element.$(this.selectors.titleInput);
+      titleInput.setValue(newDetails.title);
+    }
+
+    if (newDetails.description) {
+      const descInput = this.element.$(this.selectors.descriptionInput);
+      descInput.setValue(newDetails.description);
+    }
+
+    if (newDetails.tags) {
+      const tagsInput = this.element.$(this.selectors.tagsInput);
+      tagsInput.setValue(newDetails.tags.join(','));
+    }
+
+    this.element.$(this.selectors.saveButton).click();
+
+    // Validate and return result
+    return this.validateEdit(newDetails);
+  }
+
+  validateEdit(newDetails) {
+    // Implement validation logic
+    return {
+      success: true,
+      errorMessage: null
+    };
+  }
+}
+
+module.exports = new StudioPage();
+```
