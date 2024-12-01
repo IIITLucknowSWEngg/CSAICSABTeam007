@@ -60,54 +60,169 @@ The platform will include advanced capabilities:
 - Instant notifications
 - Interactive live events support
 
-## 4. Module Design
-### 4.1 Frontend Application (Web/Mobile)
-#### 4.1.1 User Interface (UI)
-The UI is designed to be user-friendly and adaptive to various devices. The main components include:
+# 4. Module Design
 
-- **Home Screen**: Displays video recommendations and trending content.
-- **Video Player Screen**: Provides a video playback interface with interactive features.
-- **Upload Screen**: Allows users to upload videos with metadata.
-- **User Profile**: Displays user details, uploaded videos, and watch history.
-- **Search and Filter**: Enables users to search for videos based on keywords.
+## 4.1 Frontend Architecture
+### 4.1.1 Architectural Overview
+- **Modular Component-Based Design**: Utilizing React/Next.js for scalable frontend architecture
+- **Responsive Design**: Adaptive layout for web and mobile platforms
+- **State Management**: Implementing Redux/Context API for global state management
+- **Performance Optimization**: Code splitting, lazy loading, and efficient rendering
 
-#### 4.1.2 Controller Layer
-Manages user interactions and forwards requests to the service layer. Key controllers include:
+### 4.1.2 User Interface Modules
+#### 1. Authentication Module
+- Login/Registration interfaces
+- Social media authentication
+- Password recovery workflows
+- Multi-factor authentication support
 
-- **Video Controller**
-- **Authentication Controller**
-- **Comment Controller**
+#### 2. Content Discovery Module
+- Personalized recommendation grid
+- Trending and categorized content sections
+- Advanced search and filtering mechanisms
+- Content carousel and horizontal scrolling views
 
-#### 4.1.3 Service Layer
-Implements business logic for:
+#### 3. Video Interaction Module
+- Adaptive video player
+- Interactive engagement tools (likes, comments, shares)
+- Fullscreen and Picture-in-Picture modes
+- Quality and playback speed controls
 
-- Video uploading and processing
-- Video playback and recommendation
-- User interactions (likes, comments, subscriptions)
+#### 4. User Profile Module
+- Comprehensive profile management
+- Content upload capabilities
+- Watch history and saved playlists
+- Channel customization options
 
-### 4.2 Backend System (Server-side)
-#### 4.2.1 API Gateway
-The API Gateway serves as the entry point for all application requests, routing them to appropriate backend services.
+### 4.1.3 Client-Side Processing
+- **Local Caching**: Implementing browser storage for performance
+- **Offline Support**: Service worker integration
+- **Real-time Updates**: WebSocket connections for live interactions
+- **Error Boundary Management**: Graceful error handling and user notifications
 
-#### 4.2.2 Authentication Service
-Handles:
-- User registration and login
-- Token-based authentication
-- Password management
+## 4.2 Backend System Architecture
+### 4.2.1 Distributed Service Ecosystem
+- **Microservices Architecture**: Independently scalable services
+- **Event-Driven Communication**: Kafka/RabbitMQ for inter-service messaging
+- **Service Discovery**: Consul/Kubernetes for dynamic service registration
 
-#### 4.2.3 Video Management Service
-Handles:
-- Video Upload: Processes and stores videos.
-- Video Streaming: Optimizes video playback using CDNs.
-- Metadata Management: Manages video titles, descriptions, and tags.
+### 4.2.2 Authentication and Security Layer
+#### 1. Identity Management
+- JWT-based authentication
+- Role-based access control
+- OAuth 2.0 and OpenID Connect support
+- Passwordless authentication options
 
-#### 4.2.4 Interaction Service
-Handles:
-- User interactions like likes, comments, and subscriptions.
-- Notifications for user actions (e.g., new video uploads).
+#### 2. Security Mechanisms
+- Encrypted token storage
+- Brute-force protection
+- Cross-Site Scripting (XSS) prevention
+- SQL injection safeguards
 
-#### 4.2.5 Recommendation Service
-Provides personalized video recommendations using machine learning algorithms.
+### 4.2.3 Content Management Services
+#### 1. Video Processing Service
+- Multi-format video transcoding
+- Adaptive bitrate streaming
+- Thumbnail generation
+- Metadata extraction
+- Content moderation
+
+#### 2. Storage Management
+- Distributed file storage (AWS S3/Google Cloud Storage)
+- Content Delivery Network (CDN) integration
+- Efficient storage tiering
+- Backup and disaster recovery
+
+### 4.2.4 Recommendation and Discovery Engine
+#### 1. Machine Learning Models
+- Collaborative filtering
+- Content-based recommendation
+- Hybrid recommendation algorithms
+- User behavior analysis
+
+#### 2. Personalization Mechanisms
+- Real-time preference tracking
+- Contextual recommendation
+- A/B testing recommendation strategies
+- Diversity and serendipity in suggestions
+
+### 4.2.5 Interaction and Engagement Services
+#### 1. User Interaction Tracking
+- Like, comment, and share mechanisms
+- Notification dispatch system
+- Engagement metrics collection
+- Community interaction workflows
+
+#### 2. Social Features
+- Follow/subscribe functionality
+- User-generated playlists
+- Community content curation
+- Collaborative viewing experiences
+
+## 4.3 Cross-Cutting Concerns
+### 4.3.1 Observability and Monitoring
+- Distributed tracing
+- Performance metrics collection
+- Log aggregation
+- Real-time alerting systems
+
+### 4.3.2 Scalability Strategies
+- Horizontal service scaling
+- Load balancing
+- Caching mechanisms
+- Auto-scaling configuration
+
+### 4.3.3 Compliance and Privacy
+- GDPR compliance
+- Data anonymization
+- User consent management
+- Transparent data handling
+
+## 4.4 Advertising Ecosystem
+
+### 4.4.1 Ad Targeting Strategy
+- Demographic-based targeting
+- Interest and behavior profiling
+- Geographic location targeting
+- Device-specific ad delivery
+
+### 4.4.2 Ad Placement Types
+1. Video Ad Formats
+- Pre-roll ads
+- Mid-roll ads
+- Post-roll ads
+- Overlay advertisements
+
+2. Additional Placement Channels
+- Sidebar recommendations
+- Banner advertisements
+- Sponsored content sections
+
+### 4.4.3 Revenue Generation
+- Impression-based pricing (CPM)
+- Performance-based pricing (CPC)
+- Revenue sharing with content creators
+- Conversion tracking
+
+### 4.4.4 Compliance and User Experience
+- User ad preference settings
+- Opt-out mechanisms
+- Ad frequency capping
+- Content moderation
+- Brand safety filters
+
+### 4.4.5 Technical Infrastructure
+- Low-latency ad delivery
+- Real-time bidding integration
+- Fraud detection mechanisms
+- Cross-platform ad compatibility
+
+### 4.4.6 Advertiser Tools
+- Self-service ad creation platform
+- Campaign management dashboard
+- Performance analytics
+- A/B testing capabilities
+
 
 ## 5. Database Design
 The YouTube clone uses a combination of SQL and NoSQL databases. Below is the schema for major entities:
@@ -120,7 +235,7 @@ The YouTube clone uses a combination of SQL and NoSQL databases. Below is the sc
 <image src="./database-design.png"/>
 
 #### Plantuml code
-```plantuml
+```
 @startuml
 left to right direction
 actor User
