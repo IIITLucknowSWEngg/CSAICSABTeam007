@@ -566,6 +566,129 @@ class Comment {
     return new Comment(replies[0]);
   }
 }
+```
+---
+## Feature: Content Creator - Delete Video
+### Scenario: Content Creator deletes a video
 
-module.exports = new StudioPage();
+#### Given:
+- The content creator is logged in
+- The content creator is on the *YouTube Studio* page
+
+#### When:
+- The content creator clicks on the "Delete" button for a specific video
+
+#### Then:
+- The video should be removed from the content creator's channel
+- The video should no longer be available to viewers
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const studioPage = require('../pages/studioPage');
+
+describe('Content Creator - Delete Video', function() {
+  beforeEach(async function() {
+    studioPage.open();
+    studioPage.login('contentcreator@example.com', 'securePassword');
+  });
+
+  it('should delete a video successfully', async function() {
+    // Get initial video count
+    const initialVideoCount = studioPage.getVideoCount();
+
+    // Select first video and delete
+    const firstVideo = studioPage.getFirstUploadedVideo();
+    const videoTitle = await firstVideo.getTitle();
+    
+    // Perform delete action
+    firstVideo.delete();
+
+    // Verify video count decreased
+    const updatedVideoCount = studioPage.getVideoCount();
+    expect(updatedVideoCount).to.equal(initialVideoCount - 1);
+
+    // Verify video is no longer in the list
+    const remainingVideos = studioPage.getAllVideoTitles();
+    expect(remainingVideos).to.not.include(videoTitle);
+  });
+
+  it('should handle delete confirmation dialog', async function() {
+    const firstVideo = studioPage.getFirstUploadedVideo();
+    
+    // Attempt to delete and cancel
+    const deleteDialog = firstVideo.initiateDelete();
+    deleteDialog.cancel();
+
+    // Verify video remains unchanged
+    const initialVideoCount = studioPage.getVideoCount();
+    expect(studioPage.getVideoCount()).to.equal(initialVideoCount);
+  });
+
+  it('should verify video is not publicly accessible after deletion', async function() {
+    const firstVideo = studioPage.getFirstUploadedVideo();
+    const videoId = firstVideo.getId();
+    
+    firstVideo.delete();
+
+    // Check video availability on public YouTube
+    const videoAccessibility = await studioPage.checkVideoPublicAccess(videoId);
+    expect(videoAccessibility.isAvailable).to.be.false;
+  });
+});
+```
+
+```javascript
+class VideoItem {
+  constructor(element) {
+    this.element = element;
+    this.selectors = {
+      deleteButton: '[data-testid="delete-video"]',
+      titleElement: '[data-testid="video-title"]',
+      videoIdAttribute: 'data-video-id'
+    };
+  }
+
+  async getTitle() {
+    return this.element.$(this.selectors.titleElement).getText();
+  }
+
+  getId() {
+    return this.element.getAttribute(this.selectors.videoIdAttribute);
+  }
+
+  delete() {
+    const deleteButton = this.element.$(this.selectors.deleteButton);
+    deleteButton.click();
+
+    // Handle delete confirmation
+    const confirmDialog = new DeleteConfirmationDialog();
+    confirmDialog.confirm();
+  }
+
+  initiateDelete() {
+    const deleteButton = this.element.$(this.selectors.deleteButton);
+    deleteButton.click();
+    return new DeleteConfirmationDialog();
+  }
+}
+
+class DeleteConfirmationDialog {
+  constructor() {
+    this.selectors = {
+      confirmButton: '[data-testid="delete-confirm"]',
+      cancelButton: '[data-testid="delete-cancel"]'
+    };
+  }
+
+  confirm() {
+    const confirmButton = browser.$(this.selectors.confirmButton);
+    confirmButton.click();
+  }
+
+  cancel() {
+    const cancelButton = browser.$(this.selectors.cancelButton);
+    cancelButton.click();
+  }
+}
 ```
