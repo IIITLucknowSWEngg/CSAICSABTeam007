@@ -379,33 +379,6 @@ describe('Content Creator - Edit Video', function() {
 ```
 
 ```javascript
-// pages/studioPage.js
-class StudioPage {
-  constructor() {
-    this.selectors = {
-      videoList: '#video-list',
-      editButton: '[data-testid="edit-video"]',
-      titleInput: '#video-title',
-      descriptionInput: '#video-description',
-      tagsInput: '#video-tags',
-      saveButton: '[data-testid="save-video"]'
-    };
-  }
-
-  open() {
-    browser.url('https://studio.youtube.com/videos');
-  }
-
-  login(username, password) {
-    // Login implementation
-  }
-
-  getFirstUploadedVideo() {
-    const videoElements = browser.$$(this.selectors.videoList);
-    return new VideoItem(videoElements[0]);
-  }
-}
-
 class VideoItem {
   constructor(element) {
     this.element = element;
@@ -531,44 +504,6 @@ describe('Content Creator - View Comments', function() {
 ```
 
 ```javascript
-// pages/studioPage.js
-class StudioPage {
-  constructor() {
-    this.selectors = {
-      videoList: '#video-list',
-      commentsTab: '[data-testid="comments-tab"]'
-    };
-  }
-
-  open() {
-    browser.url('https://studio.youtube.com/videos');
-  }
-
-  login(username, password) {
-    // Login implementation
-  }
-
-  getFirstUploadedVideo() {
-    const videoElements = browser.$$(this.selectors.videoList);
-    return new VideoPage(videoElements[0]);
-  }
-}
-
-class VideoPage {
-  constructor(element) {
-    this.element = element;
-    this.selectors = {
-      commentsTab: '[data-testid="comments-tab"]'
-    };
-  }
-
-  openCommentsTab() {
-    const commentsTab = this.element.$(this.selectors.commentsTab);
-    commentsTab.click();
-    return new CommentsSection();
-  }
-}
-
 class CommentsSection {
   constructor() {
     this.selectors = {
