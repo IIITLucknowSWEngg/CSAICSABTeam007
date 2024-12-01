@@ -1,10 +1,10 @@
 # Features for YouTube Platform
 
 ---
+## 1. User Features
+## 1.1 Feature: User - Sign In to Google Account
 
-## Feature: User - Sign In to Google Account
-
-### Scenario: User signs in to their Google account
+###  Scenario: User signs in to their Google account
 
 #### Given:
 - The user is on the Google sign-in page.
@@ -35,7 +35,7 @@ describe('User - Sign In to Google Account', function() {
 
 ---
 
-## Feature: Content Creator - Video Upload
+## 1.2 Feature: Content Creator - Video Upload
 
 ### Scenario: Content Creator uploads a video successfully
 
@@ -68,7 +68,7 @@ describe('Content Creator - Video Upload', function() {
 ```
 ---
 
-## Feature: User - Watch and Interact with Videos
+## 1.3 Feature: User - Watch and Interact with Videos
 
 ### Scenario: User watches a video and likes it
 
@@ -107,7 +107,7 @@ describe('User Watch and Like Video', function() {
 });
 ```
 ---
-## Feature: User - Subscribe to a Channel
+## 1.4 Feature: User - Subscribe to a Channel
 
 ### Scenario: User subscribes to a channel
 
@@ -147,7 +147,7 @@ describe('User Subscribe to Channel', function() {
 });
 ```
 ---
-## Feature: User - Share Video
+## 1.5 Feature: User - Share Video
 
 ### Scenario: User shares a video
 
@@ -186,7 +186,7 @@ describe('User Share Video', function() {
 });
 ```
 ---
-## Feature: User - Report Video
+## 1.6 Feature: User - Report Video
 
 ### Scenario: User reports a video
 
@@ -222,8 +222,8 @@ describe('User - Report Video', function() {
 
 ```
 ---
-
-## Feature: Content Creator - View Analytics
+## 2. Content Creator Features
+## 2.1 Feature: Content Creator - View Analytics
 
 ### Scenario: Content Creator views video analytics
 
@@ -255,7 +255,7 @@ describe('Content Creator - View Analytics', function() {
 ```
 ---
 
-## Feature: Content Creator Earnings View
+## 2.2 Feature: Content Creator Earnings View
 
 ### Scenario: Verify Earnings Dashboard Details
 
@@ -311,7 +311,7 @@ describe('Content Creator Earnings View', () => {
 ```
 ---
 
-## Feature: Content Creator - Edit Video
+## 2.3 Feature: Content Creator - Edit Video
 ### Scenario: Content Creator edits a video after upload
 
 #### Given:
@@ -432,7 +432,7 @@ class VideoItem {
 module.exports = new StudioPage();
 ```
 
-## Feature: Content Creator - View Comments
+## 2.4 Feature: Content Creator - View Comments
 ### Scenario: Content Creator views comments on a video
 
 #### Given:
@@ -568,7 +568,7 @@ class Comment {
 }
 ```
 ---
-## Feature: Content Creator - Delete Video
+## 2.5 Feature: Content Creator - Delete Video
 ### Scenario: Content Creator deletes a video
 
 #### Given:
@@ -694,7 +694,7 @@ class DeleteConfirmationDialog {
 ```
 ---
 
-## Feature: Content Creator - Monetize Video
+## 2.6 Feature: Content Creator - Monetize Video
 ### Scenario: Content Creator monetizes a video
 
 #### Given:
