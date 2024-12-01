@@ -63,6 +63,118 @@ The platform will include advanced capabilities:
 # 4. Module Design
 
 ## 4.1 Frontend Architecture
+
+![System achitecture](frontend-arch.png)
+
+```plantuml
+@startuml
+!theme plain
+title YouTube Clone - Frontend Architecture
+
+package "Frontend Application" {
+    ' Core Architecture Layers
+    package "Presentation Layer" {
+        [Pages/Views] as Pages
+        [Components] as Components
+        [Layouts] as Layouts
+    }
+
+    package "State Management" {
+        [Redux Store] as ReduxStore
+        [Action Creators] as Actions
+        [Reducers] as Reducers
+        
+        folder "Slices" {
+            [User Slice] as UserSlice
+            [Video Slice] as VideoSlice
+            [Channel Slice] as ChannelSlice
+            [Playlist Slice] as PlaylistSlice
+        }
+    }
+
+    package "Services Layer" {
+        [Authentication Service] as AuthService
+        [Video Service] as VideoService
+        [Channel Service] as ChannelService
+        [Interaction Service] as InteractionService
+    }
+
+    package "Routing" {
+        [React Router] as Router
+        [Route Configuration] as RouteConfig
+    }
+
+    package "Utilities" {
+        [API Interceptor] as APIInterceptor
+        [Error Handling] as ErrorHandler
+        [Authentication Middleware] as AuthMiddleware
+    }
+
+    package "UI Kit & Styling" {
+        [Tailwind CSS] as Styling
+        [Shadcn UI Components] as UIKit
+        [Custom Icons] as Icons
+    }
+
+    package "Performance Optimization" {
+        [Code Splitting] as CodeSplit
+        [Lazy Loading] as LazyLoad
+        [Memoization] as Memoization
+    }
+}
+
+package "External Integrations" {
+    [Google OAuth] as OAuth
+    [Video Player] as VideoPlayer
+    [Analytics] as Analytics
+}
+
+' Relationship Connections
+Pages -down-> Router
+Pages -down-> Components
+Pages -down-> ReduxStore
+
+Components -down-> UIKit
+Components -down-> Icons
+Components -down-> Styling
+
+ReduxStore -down-> Actions
+ReduxStore -down-> Reducers
+
+Actions -down-> Services
+Reducers -down-> Services
+
+Services -down-> APIInterceptor
+Services -down-> AuthMiddleware
+
+Router -down-> RouteConfig
+Router -down-> LazyLoad
+
+APIInterceptor -down-> OAuth
+APIInterceptor -down-> ErrorHandler
+
+' Performance Optimization Connections
+Pages -down-> CodeSplit
+Components -down-> Memoization
+
+' External Integration Connections
+Pages -down-> VideoPlayer
+Pages -down-> Analytics
+
+note right of "Frontend Application"
+    Technology Stack:
+    - React 18
+    - Redux Toolkit
+    - React Router
+    - TypeScript
+    - Tailwind CSS
+    - Shadcn UI
+    Responsive and Performant Design
+end note
+}
+@enduml
+```
+
 ### 4.1.1 Architectural Overview
 - **Modular Component-Based Design**: Utilizing React/Next.js for scalable frontend architecture
 - **Responsive Design**: Adaptive layout for web and mobile platforms
@@ -101,6 +213,141 @@ The platform will include advanced capabilities:
 - **Error Boundary Management**: Graceful error handling and user notifications
 
 ## 4.2 Backend System Architecture
+![System achitecture](backend-arch.png)
+
+```plantuml
+@startuml
+!define DARKBLUE
+!includeurl https://raw.githubusercontent.com/Argonaut-B04/PlantUML-style-C4/master/style.puml
+
+title YouTube Clone - Backend System Architecture
+
+frame "Frontend Layer" {
+    [Web Client] as WebClient
+    [Mobile Client] as MobileClient
+}
+
+cloud "API Gateway" {
+    [Nginx / Kong API Gateway] as APIGateway
+}
+
+frame "Authentication Services" {
+    [Authentication Service] as AuthService
+    database "User Database" {
+        [MongoDB - User Profiles] as UserDB
+    }
+}
+
+frame "Video Processing Microservices" {
+    [Video Upload Service] as UploadService
+    [Video Encoding Service] as EncodingService
+    [Thumbnail Generation Service] as ThumbnailService
+    
+    database "Video Metadata DB" {
+        [PostgreSQL - Video Metadata] as VideoMetadataDB
+    }
+    
+    storage "Video Storage" {
+        [Distributed File Storage] as VideoStorage
+    }
+}
+
+frame "Content Delivery" {
+    [CDN Service] as CDN
+}
+
+frame "Content Services" {
+    [Video Recommendation Service] as RecommendationService
+    [Search Service] as SearchService
+    [Analytics Service] as AnalyticsService
+    
+    database "Redis Caches" {
+        [View Count Cache] as ViewCache
+        [Recommendation Cache] as RecommendCache
+    }
+    
+    database "Elasticsearch" {
+        [Video Search Index] as SearchIndex
+    }
+}
+
+frame "Social Interaction Services" {
+    [Comment Service] as CommentService
+    [Interaction Service] as InteractionService
+    
+    database "Interaction Database" {
+        [Cassandra - Likes/Comments] as InteractionDB
+    }
+}
+
+frame "Monetization Services" {
+    [Monetization Service] as MonetizationService
+    database "Billing Database" {
+        [PostgreSQL - Earnings] as BillingDB
+    }
+}
+
+frame "Message Queues & Event Streaming" {
+    [Apache Kafka] as EventBus
+    [RabbitMQ] as MessageQueue
+}
+
+frame "Monitoring & Observability" {
+    [Prometheus] as Monitoring
+    [Grafana] as Dashboard
+    [ELK Stack] as Logging
+}
+
+' Connections
+WebClient --> APIGateway
+MobileClient --> APIGateway
+
+APIGateway --> AuthService : Authentication
+APIGateway --> UploadService : Video Upload
+APIGateway --> CommentService : Comments
+APIGateway --> InteractionService : Likes/Interactions
+
+AuthService --> UserDB : Store/Retrieve Users
+AuthService --> EventBus : User Events
+
+UploadService --> VideoStorage : Store Videos
+UploadService --> EncodingService : Trigger Encoding
+UploadService --> VideoMetadataDB : Store Metadata
+UploadService --> EventBus : Upload Events
+
+EncodingService --> ThumbnailService : Generate Thumbnails
+EncodingService --> VideoStorage : Store Processed Videos
+EncodingService --> EventBus : Encoding Events
+
+RecommendationService --> SearchIndex
+RecommendationService --> RecommendCache
+RecommendationService --> EventBus : Recommendation Events
+
+CommentService --> InteractionDB : Store Comments
+CommentService --> EventBus : Comment Events
+
+InteractionService --> InteractionDB : Store Interactions
+InteractionService --> ViewCache : Update View Counts
+
+CDN --> VideoStorage : Distribute Content
+
+SearchService --> SearchIndex : Update/Query
+SearchService --> EventBus : Search Events
+
+AnalyticsService --> EventBus : Consume Events
+AnalyticsService --> Monitoring : Report Metrics
+
+MonetizationService --> BillingDB : Track Earnings
+MonetizationService --> EventBus : Monetization Events
+
+EventBus <--> MessageQueue : Event Routing
+
+Monitoring --> Logging : Collect Logs
+Monitoring --> Dashboard : Visualize Metrics
+
+@enduml
+```
+
 ### 4.2.1 Distributed Service Ecosystem
 - **Microservices Architecture**: Independently scalable services
 - **Event-Driven Communication**: Kafka/RabbitMQ for inter-service messaging
