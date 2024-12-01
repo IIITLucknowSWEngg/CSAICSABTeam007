@@ -1,4 +1,5 @@
-# System Context Diagram
+# 1. C4 Diagrams
+# 1.1 System Context Diagram
 
 ![Screenshot_20241130_193149](https://github.com/user-attachments/assets/81dbb0df-d379-421f-a33f-66032d9bfb09)
 
@@ -45,7 +46,7 @@ Rel(youtubeClone, ml, "Gets recommendations", "gRPC")
 Rel(youtubeClone, moderation, "Screens content", "API")
 @enduml
 ```
-# Container Diagram
+# 1.2 Container Diagram
 
 ![container](https://github.com/user-attachments/assets/4270db57-cf3d-4853-a2e2-bfd0b8934f78)
 
@@ -119,8 +120,8 @@ Rel(transcode, queue, "Subscribes", "AMQP")
 @enduml
 ```
 
-# Component Diagram 
-## Creator Features
+# 1.3 Component Diagram 
+## 1.3.1 Creator Features
 ![component](https://github.com/user-attachments/assets/4c337d10-acb5-44eb-bd09-846a81350ee1)
 
 ```
@@ -188,7 +189,7 @@ Rel(ads, ad_network, "Serves", "API")
 ```
 
 
-## Viewer Features
+## 1.3.2 Viewer Features
 ![component](https://www.plantuml.com/plantuml/png/ZLHDR-Cs4BthLx0-9K0INthgQLCdkmdW94RiTD6JCIR74hiKQN16SRr5_tj9ob8OoGPwqb1uy_ZcW-yBCNXkQYCcCrVld4NBuav3wQ4Mr-8FZNlquYi2DnvfKloYhJIDGb4nx-YtwTJ3_gRKN3MRXj1BPnajtqXNJtS6R6I-9bP6RwQpNwyNyTVRqtnQ0p7wy6lTttgp2zYYcD_--VAsMdz_N3siv_VVxf_lBYuBrcnG_0-1HJ5pba5RzElVNMCL-CF5Uy9SYScmcalnJo64-22-g5oD0VWGFW66QX8EhmYIOx10Jyw2qJzHYMEbmcEejKQhWBMpayi1OMZ2uNYtGYSMwVY9zGcL1X5n6v0_HWJQCle03SZ7DeptY2UmKBPCpqxXpLyKmxd-WNGbMaKS8gh08ur8Uz59I5w0kBUbjfZAFN3bR8ncnrgfAKka21jJ4eANLG0lKo2Is2r8x8lDcPGcwTxH7yODyswhJHp26w4NY_PuSWw2a5dRiXCpODe3osfjW5F_lyUJc0CFsh-4zsoQHXEF95MQsFb3J_BGdWUzZykLCR4FqmpYJcv4l8PY9SSu6sVMguROrJsXTCPW6lwPUgdPaFHwbo2niknyPbzc5LYBHcm3jzkVKciTwwsMq94-PsSn2uWHvzjE0IC9i4g0GSzdv7PB6cMqeLWUYB4UyDrfaWrHlAzEHKJeYOs6jZTT1oD-5MTm-f4aUTtREjzJvVRME51Hnp4yqygNxTPeYzsuHW91IYJI6sqqnrMwpS-z9UKB40UOZ8-kUdj8zDwPAFVVecWRjhx_ExHJsTZ9k-TFpmoDRbzP3WKBvi1QKfJHnTd3ZmyltzyijJRHiK1MiTGvWhSHCdOHIYaXjtX5StJLt7I-8iiAwPEZT0vdmOJ4Zxosiha3HNrteqUlLejbTqDdiorsoHwX9l4UFJV7vj31G6BFjhfiF0wLnApCXlDDIwimJ1ZWipr_0AlCQVxEFbE3lo6Jy61Z_nFwTl7O0Nj__72bjEPZ4Hasjy9SzTc4tAHUV0bM_pofUsWwGxjOUHq6x8UfsNJpPMmBoPzbLdq-kppf5NVECuc6eCGF-1UqggdDVm00)
 ```
 @startuml "Component Diagram - Viewer Features"
@@ -246,7 +247,7 @@ Rel(player, analytics, "Reports usage", "API")
 ```
 
 
-## Advertiser Features
+## 1.3.3 Advertiser Features
 ![component](https://www.plantuml.com/plantuml/png/ZLHDJoCv4xxdLzIR4qWlSDdJdYOa38i4J4HWLdjgLTf5npl-QBcgOQBL_lUrswGndPxHtEoowwcFf-hvn891EcjWllIszOwSm4fZ4z326IpK2mNHJ04-4qeNYEUp_sbNcquHx4HQ_ltY8k3hUQDbrsqxfb1x9n7blFRseZNe4lePYp9wUx7yxMoTJ4ztjnSMMIX4KpL4Fc_ZtzdiTl7NbwV7wi-Rnp-gswlhg_lLoUbCj1Y2NqnoDbjw9wWTXUhITqvXs9_WyE__C9-gx1J-cG70Uv2J6csBkd6LHOTDxxXyCy5TDisZxTuhEl-Rvpqk79oW3eIYlPkVZc05GqEYNPCSEgN9rGIF1sE2MUzbvrqwhSZwM6YxqpKm6Qed4RUTYixn-sL_W8KnlaRnu_GsBJaLOq1YANXp3AHLUi-LNEOBRFOiPCULTdqga5jZe_CRs0WnT-65AfPOgayjVBF0fhSai0V2MWxzomC4YbWtnwMYghhMU5JvzuAPv0TaVDMAFA1Je6ryXkp7ntoGRGqAPSJ7jnlSwct0iF-GtphGMKwC51ZS-qvukcvqQFQYQyweQmhFFbXCLA-GTrkFGHNGnMHf5_5tSfod9GaPy2wVu35W_Ot2U6G4jI45RH6pJuVrCMXizmi5rjwb78PB2LsqzE7B3LX2xi9FADzgO_8GNURJz0IjSPyme0s-9kRuxoWvxLwyhZFMpU4yWlciNQnGeu50hGyoXTFcK9Mbs2HLnBxh3UNyP3wAt5NVpX-mNCUJqQd3cURbS8VbZewvMNkZwpt49kjdNK_B0tTjgkEZIcsoSLJxicFnbW8WisP9SIFSlxDPRdXrzVszzWQ5Nd5V57-TBH-RA04TOx_RiUOI25NbI5vz-9PhlS-NURufpHBqjiibbNxMLANYtTs-QnriABpec7IXXCFyboZ5FbNqFVKcsYX46omE3mcaN3D94vodOVP0PaBDoxHMzAmTCU1R6lD-v7ACY30DCEZkXeJ1QAk5VyrnqDayUfmiOzViEzRFKW2Vig8b-cawyjYxqBed9Xxkax6B_en8l2RXWQYUlVNDmQjGldV5MZHDe2O50eM24waEVyTCfyt0G5pgsIZae3YZHH_QEuvN-fGYSqsEGfzb5fEVEaviLfOouiDRsPlfIVYW85_HQ3N1nhJhXuLS7VQFE3wCuXOgNvBoa6k4gEgZW9_8gSwQ_m00)
 ```
 @startuml "Component Diagram - Advertiser Features"
@@ -306,7 +307,7 @@ Rel(conversion, metrics, "Reports ROI", "Internal")
 ```
 
 
-# Deployment Diagram 
+# 2. Deployment Diagram 
 
 ![Screenshot_20241130_194016](https://github.com/user-attachments/assets/8f1ea1b0-b432-498f-abe9-6044f1324cf9)
 
