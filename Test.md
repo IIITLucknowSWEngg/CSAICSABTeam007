@@ -692,3 +692,73 @@ class DeleteConfirmationDialog {
   }
 }
 ```
+---
+
+## Feature: Content Creator - Monetize Video
+### Scenario: Content Creator monetizes a video
+
+#### Given:
+- The content creator is logged in
+- The content creator has enabled monetization in their YouTube account settings
+
+#### When:
+- The content creator clicks on the "Monetize" button for a specific video
+
+#### Then:
+- The video should be monetized and show ads to viewers
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const studioPage = require('../pages/studioPage');
+
+describe('Content Creator - Monetize Video', function() {
+  beforeEach(async function() {
+    studioPage.open();
+    studioPage.login('contentcreator@example.com', 'securePassword');
+  });
+
+  it('should monetize an eligible video', async function() {
+    // Find first uploaded video
+    const firstVideo = studioPage.getFirstUploadedVideo();
+
+    // Check video eligibility for monetization
+    const monetizationEligibility = await firstVideo.checkMonetizationEligibility();
+    expect(monetizationEligibility.isEligible).to.be.true;
+
+    // Monetize the video
+    firstVideo.monetize();
+
+    // Verify monetization status
+    const updatedMonetizationStatus = await firstVideo.getMonetizationStatus();
+    expect(updatedMonetizationStatus).to.equal('Monetized');
+  });
+
+  it('should handle video not eligible for monetization', async function() {
+    const firstVideo = studioPage.getFirstUploadedVideo();
+
+    // Check video eligibility
+    const monetizationEligibility = await firstVideo.checkMonetizationEligibility();
+    
+    if (!monetizationEligibility.isEligible) {
+      // Attempt to monetize and verify error
+      const monetizationResult = firstVideo.monetize();
+      expect(monetizationResult.success).to.be.false;
+      expect(monetizationResult.errorMessage).to.exist;
+    }
+  });
+
+  it('should verify ads are displayed after monetization', async function() {
+    const firstVideo = studioPage.getFirstUploadedVideo();
+    
+    // Ensure video is monetized
+    if (await firstVideo.getMonetizationStatus() !== 'Monetized') {
+      firstVideo.monetize();
+    }
+
+    // Verify ads on video playback
+    const videoPlaybackDetails = await studioPage.playVideoAndCheckAds(firstVideo.getId());
+    expect(videoPlaybackDetails.adsDisplayed).to.be.true;
+  });
+});
+```
