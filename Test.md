@@ -253,3 +253,59 @@ describe('Content Creator - View Analytics', function() {
   });
 });
 ```
+---
+
+## Feature: Content Creator Earnings View
+
+### Scenario: Verify Earnings Dashboard Details
+
+#### Given:
+- The content creator is logged into YouTube Studio
+- The content creator is on the Earnings page
+
+#### When:
+- The content creator clicks on the "Earnings" tab
+
+#### Then:
+- Total earnings should be visible
+- Total earnings should display in correct currency format
+- Revenue sources section should be displayed
+- At least one revenue source should exist
+- Payment history table should be visible
+- Payment history table should have at least one entry
+
+```javascript
+import { expect } from 'chai';
+
+describe('Content Creator Earnings View', () => {
+  let page;
+
+  beforeEach(async () => {
+    page = await browser.newPage();
+    await page.goto('https://studio.youtube.com/earnings');
+    await page.login('contentcreator@example.com', 'securePassword');
+  });
+
+  afterEach(async () => {
+    await page.close();
+  });
+
+  it('should display earnings information when Earnings tab is clicked', async () => {
+    await page.click('[data-testid="earnings-tab"]');
+
+    const totalEarningsElement = await page.locator('[data-testid="total-earnings"]');
+    expect(await totalEarningsElement.isVisible()).to.be.true;
+    expect(await totalEarningsElement.textContent()).to.match(/^\$\d+(\.\d{1,2})?$/);
+
+    const revenueSources = await page.locator('[data-testid="revenue-sources"]');
+    expect(await revenueSources.isVisible()).to.be.true;
+    const sourceItems = await revenueSources.$$('[data-testid="revenue-source-item"]');
+    expect(sourceItems.length).to.be.greaterThan(0);
+
+    const paymentHistoryTable = await page.locator('[data-testid="payment-history-table"]');
+    expect(await paymentHistoryTable.isVisible()).to.be.true;
+    const paymentRows = await paymentHistoryTable.$$('tr');
+    expect(paymentRows.length).to.be.greaterThan(0);
+  });
+});
+```
