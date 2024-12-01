@@ -458,3 +458,179 @@ class VideoItem {
 
 module.exports = new StudioPage();
 ```
+
+## Feature: Content Creator - View Comments
+### Scenario: Content Creator views comments on a video
+
+#### Given:
+- The content creator is logged in
+- The content creator has uploaded at least one video
+- The content creator is on the *YouTube Studio* page
+
+#### When:
+- The content creator clicks on the "Comments" tab for a specific video
+
+#### Then:
+- The content creator should see the list of comments for the video
+- Comments should include any replies
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const studioPage = require('../pages/studioPage');
+
+describe('Content Creator - View Comments', function() {
+  let videoPage;
+
+  beforeEach(async function() {
+    studioPage.open();
+    studioPage.login('contentcreator@example.com', 'securePassword');
+    videoPage = studioPage.getFirstUploadedVideo();
+  });
+
+  it('should display comments for a specific video', async function() {
+    const commentsSection = videoPage.openCommentsTab();
+
+    // Verify comments section is visible
+    expect(commentsSection.isVisible()).to.be.true;
+
+    // Check total number of comments
+    const commentCount = commentsSection.getTotalCommentCount();
+    expect(commentCount).to.be.at.least(0);
+
+    // Verify comment details if comments exist
+    if (commentCount > 0) {
+      const firstComment = commentsSection.getFirstComment();
+      
+      // Check comment properties
+      expect(firstComment.getText()).to.exist;
+      expect(firstComment.getAuthor()).to.exist;
+      expect(firstComment.getTimestamp()).to.exist;
+
+      // Check replies if any
+      const replyCount = firstComment.getReplyCount();
+      if (replyCount > 0) {
+        const firstReply = firstComment.getFirstReply();
+        expect(firstReply.getText()).to.exist;
+      }
+    }
+  });
+
+  it('should handle videos with no comments', async function() {
+    const commentsSection = videoPage.openCommentsTab();
+
+    // Verify comments section is visible even with no comments
+    expect(commentsSection.isVisible()).to.be.true;
+
+    // Check for empty state message
+    if (commentsSection.getTotalCommentCount() === 0) {
+      expect(commentsSection.getEmptyStateMessage()).to.equal('No comments yet');
+    }
+  });
+});
+```
+
+```javascript
+// pages/studioPage.js
+class StudioPage {
+  constructor() {
+    this.selectors = {
+      videoList: '#video-list',
+      commentsTab: '[data-testid="comments-tab"]'
+    };
+  }
+
+  open() {
+    browser.url('https://studio.youtube.com/videos');
+  }
+
+  login(username, password) {
+    // Login implementation
+  }
+
+  getFirstUploadedVideo() {
+    const videoElements = browser.$$(this.selectors.videoList);
+    return new VideoPage(videoElements[0]);
+  }
+}
+
+class VideoPage {
+  constructor(element) {
+    this.element = element;
+    this.selectors = {
+      commentsTab: '[data-testid="comments-tab"]'
+    };
+  }
+
+  openCommentsTab() {
+    const commentsTab = this.element.$(this.selectors.commentsTab);
+    commentsTab.click();
+    return new CommentsSection();
+  }
+}
+
+class CommentsSection {
+  constructor() {
+    this.selectors = {
+      commentsContainer: '[data-testid="comments-container"]',
+      commentList: '[data-testid="comment-list"]',
+      emptyStateMessage: '[data-testid="no-comments-message"]'
+    };
+  }
+
+  isVisible() {
+    return browser.$(this.selectors.commentsContainer).isDisplayed();
+  }
+
+  getTotalCommentCount() {
+    const comments = browser.$$(this.selectors.commentList);
+    return comments.length;
+  }
+
+  getFirstComment() {
+    const comments = browser.$$(this.selectors.commentList);
+    return new Comment(comments[0]);
+  }
+
+  getEmptyStateMessage() {
+    return browser.$(this.selectors.emptyStateMessage).getText();
+  }
+}
+
+class Comment {
+  constructor(element) {
+    this.element = element;
+    this.selectors = {
+      commentText: '[data-testid="comment-text"]',
+      commentAuthor: '[data-testid="comment-author"]',
+      commentTimestamp: '[data-testid="comment-timestamp"]',
+      replyCount: '[data-testid="reply-count"]',
+      replyList: '[data-testid="reply-list"]'
+    };
+  }
+
+  getText() {
+    return this.element.$(this.selectors.commentText).getText();
+  }
+
+  getAuthor() {
+    return this.element.$(this.selectors.commentAuthor).getText();
+  }
+
+  getTimestamp() {
+    return this.element.$(this.selectors.commentTimestamp).getText();
+  }
+
+  getReplyCount() {
+    const replyCountEl = this.element.$(this.selectors.replyCount);
+    return replyCountEl.isExisting() ? parseInt(replyCountEl.getText(), 10) : 0;
+  }
+
+  getFirstReply() {
+    const replies = this.element.$$(this.selectors.replyList);
+    return new Comment(replies[0]);
+  }
+}
+
+module.exports = new StudioPage();
+```
