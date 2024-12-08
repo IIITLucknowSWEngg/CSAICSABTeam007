@@ -157,7 +157,7 @@ Here's the description template for your YouTube clone. You can replace the plac
 ## Appendix B: Use Case Diagram  
 Below is the Use Case Diagram for the happy path of the YouTube clone application. It illustrates the primary actors (Viewer, Content Creator, and Admin) and their interactions with the system for key processes like User Registration, Video Upload, Video Viewing, Commenting, and Admin Management.
 
-![Use Case Diagram](/Assignment1/Daigram/usecase.png)
+![Use Case Diagram](/Assignment1/Diagram/usecase.png)
 
 
 The diagram details the step-by-step flow for each interaction, representing the standard sequence of actions without any exception handling (happy path):  
@@ -170,12 +170,12 @@ The diagram details the step-by-step flow for each interaction, representing the
 
 ## Abuse Case Diagram  
 
-![Abuse Case Diagram](/Assignment1/Daigram/AbuseCaseDiagram.png)
+![Abuse Case Diagram](/Assignment1/Diagram/AbuseCaseDiagram.png)
 
 ---
 
 ## Error Case Diagram  
 
-![Error Case Diagram](/Assignment1/Daigram/ErrorCaseDiagram.png)
+![Error Case Diagram](/Assignment1/Diagram/ErrorCaseDiagram.png)
 
 ---

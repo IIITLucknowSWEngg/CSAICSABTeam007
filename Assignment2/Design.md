@@ -64,7 +64,7 @@ The platform will include advanced capabilities:
 
 ## 4.1 Frontend Architecture
 
-![System achitecture](/Assignment2/Daigram/frontend-arch.png)
+![System achitecture](/Assignment2/Diagram/frontend-arch.png)
 
 ```plantuml
 @startuml
@@ -213,7 +213,7 @@ end note
 - **Error Boundary Management**: Graceful error handling and user notifications
 
 ## 4.2 Backend System Architecture
-![System achitecture](/Assignment2/Daigram/backend-arch.png)
+![System achitecture](/Assignment2/Diagram/backend-arch.png)
 
 ```plantuml
 @startuml
@@ -479,7 +479,7 @@ The YouTube clone uses a combination of SQL and NoSQL databases. Below is the sc
 - **Comments**: Stores user comments and associated metadata.
 - **Interactions**: Tracks likes, views, and subscriptions.
 
-<image src="./Daigram/database-design.png"/>
+<image src="./Diagram/database-design.png"/>
 
 #### Plantuml code
 ```
@@ -567,7 +567,7 @@ rectangle YouTube {
 
 ## 6. Interface Design
 
-![interface design](/Assignment2/Daigram/Interface-design.png)
+![interface design](/Assignment2/Diagram/Interface-design.png)
 
 ```plantuml
 @startuml
