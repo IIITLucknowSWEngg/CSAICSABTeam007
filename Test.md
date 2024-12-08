@@ -33,41 +33,6 @@ describe('User - Sign In to Google Account', function() {
 });
 ```
 
----
-
-## 1.2 Feature: Content Creator - Video Upload
-
-### Scenario: Content Creator uploads a video successfully
-
-#### Given:
-- The content creator is logged in.  
-- The content creator is in **YouTube Studio** on the video upload page.
-
-#### When:
-- The content creator selects a valid video file.  
-- The content creator fills out the video title, description, and tags.  
-- The content creator clicks the upload button.
-
-#### Then:
-- The video should be successfully uploaded.  
-- The video should appear on the content creator's channel.
-  
-```javascript
-const chai = require('chai');
-const expect = chai.expect;
-const studioPage = require('../pages/studioPage');
-
-describe('Content Creator - Video Upload', function() {
-  it('should allow content creator to upload a video successfully', function() {
-    studioPage.open();
-    studioPage.uploadVideo('video.mp4', 'Tutorial: Learn JavaScript', 'A complete guide to JavaScript.', ['JavaScript', 'Tutorial']);
-    expect(studioPage.getSuccessMessage()).to.equal('Video uploaded successfully');
-    expect(studioPage.getUploadedVideoTitle()).to.equal('Tutorial: Learn JavaScript');
-  });
-});
-```
----
-
 ## 1.3 Feature: User - Watch and Interact with Videos
 
 ### Scenario: User watches a video and likes it
@@ -223,7 +188,41 @@ describe('User - Report Video', function() {
 ```
 ---
 ## 2. Content Creator Features
-## 2.1 Feature: Content Creator - View Analytics
+## 2.1 Feature: Content Creator - Video Upload
+
+### Scenario: Content Creator uploads a video successfully
+
+#### Given:
+- The content creator is logged in.  
+- The content creator is in **YouTube Studio** on the video upload page.
+
+#### When:
+- The content creator selects a valid video file.  
+- The content creator fills out the video title, description, and tags.  
+- The content creator clicks the upload button.
+
+#### Then:
+- The video should be successfully uploaded.  
+- The video should appear on the content creator's channel.
+  
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const studioPage = require('../pages/studioPage');
+
+describe('Content Creator - Video Upload', function() {
+  it('should allow content creator to upload a video successfully', function() {
+    studioPage.open();
+    studioPage.uploadVideo('video.mp4', 'Tutorial: Learn JavaScript', 'A complete guide to JavaScript.', ['JavaScript', 'Tutorial']);
+    expect(studioPage.getSuccessMessage()).to.equal('Video uploaded successfully');
+    expect(studioPage.getUploadedVideoTitle()).to.equal('Tutorial: Learn JavaScript');
+  });
+});
+```
+---
+
+
+## 2.2 Feature: Content Creator - View Analytics
 
 ### Scenario: Content Creator views video analytics
 
@@ -255,7 +254,7 @@ describe('Content Creator - View Analytics', function() {
 ```
 ---
 
-## 2.2 Feature: Content Creator Earnings View
+## 2.3 Feature: Content Creator Earnings View
 
 ### Scenario: Verify Earnings Dashboard Details
 
@@ -311,7 +310,7 @@ describe('Content Creator Earnings View', () => {
 ```
 ---
 
-## 2.3 Feature: Content Creator - Edit Video
+## 2.4 Feature: Content Creator - Edit Video
 ### Scenario: Content Creator edits a video after upload
 
 #### Given:
@@ -432,7 +431,7 @@ class VideoItem {
 module.exports = new StudioPage();
 ```
 
-## 2.4 Feature: Content Creator - View Comments
+## 2.5 Feature: Content Creator - View Comments
 ### Scenario: Content Creator views comments on a video
 
 #### Given:
@@ -568,7 +567,7 @@ class Comment {
 }
 ```
 ---
-## 2.5 Feature: Content Creator - Delete Video
+## 2.6 Feature: Content Creator - Delete Video
 ### Scenario: Content Creator deletes a video
 
 #### Given:
@@ -694,7 +693,7 @@ class DeleteConfirmationDialog {
 ```
 ---
 
-## 2.6 Feature: Content Creator - Monetize Video
+## 2.7 Feature: Content Creator - Monetize Video
 ### Scenario: Content Creator monetizes a video
 
 #### Given:
