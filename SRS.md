@@ -46,7 +46,7 @@ The YouTube clone is a web and mobile-based application that provides users with
 ### 2.4 Operating Environment
 - **Client-side**: Web browsers, Android, and iOS applications.
 - **Server-side**: Node.js or Django/Flask backend with a database like MongoDB or PostgreSQL.
-- **Third-Party Services**: CDN for video content delivery, third-party authentication (Google, Facebook), and payment gateways for monetization.
+- **Third-Party Services**: CDN for video content delivery, third-party authentication (Google), and payment gateways for monetization.
 
 ### 2.5 Design and Implementation Constraints
 - The platform must handle large file uploads (videos) and efficiently stream videos across various devices.
