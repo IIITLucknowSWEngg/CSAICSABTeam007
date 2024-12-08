@@ -33,7 +33,7 @@ describe('User - Sign In to Google Account', function() {
 });
 ```
 
-## 1.3 Feature: User - Watch and Interact with Videos
+## 1.2 Feature: User - Watch and Interact with Videos
 
 ### Scenario: User watches a video and likes it
 
@@ -72,7 +72,7 @@ describe('User Watch and Like Video', function() {
 });
 ```
 ---
-## 1.4 Feature: User - Subscribe to a Channel
+## 1.3 Feature: User - Subscribe to a Channel
 
 ### Scenario: User subscribes to a channel
 
@@ -112,7 +112,7 @@ describe('User Subscribe to Channel', function() {
 });
 ```
 ---
-## 1.5 Feature: User - Share Video
+## 1.4 Feature: User - Share Video
 
 ### Scenario: User shares a video
 
@@ -151,7 +151,7 @@ describe('User Share Video', function() {
 });
 ```
 ---
-## 1.6 Feature: User - Report Video
+## 1.5 Feature: User - Report Video
 
 ### Scenario: User reports a video
 
