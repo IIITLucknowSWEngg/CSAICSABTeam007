@@ -1059,3 +1059,143 @@ describe('Security Requirements - Data Protection', function() {
     });
 });
 ```
+## 3.3 Usability Testing
+## Feature: User Interface Accessibility
+### Scenario: Responsive UI Design
+#### Given:
+- A user is accessing the platform on various devices
+- The devices include phones, tablets, and desktops
+#### When:
+- The user interacts with the UI
+#### Then:
+- The UI must adjust seamlessly to different screen sizes
+- All interactive elements must remain visible and functional
+#### Error Messages:
+- "UI element overlaps detected: Component {X}"
+- "Button not accessible: Component {X}, Screen size {Y}"
+- "Text truncation issue: Component {X}, Screen size {Y}"
+
+## Feature: Video Player Controls
+### Scenario: Video Playback Features
+#### Given:
+- A user is watching a video
+- The user wants to adjust video settings
+#### When:
+- The user interacts with volume, quality, captions, or full-screen controls
+#### Then:
+- All controls must function correctly and reflect the changes immediately
+#### Error Messages:
+- "Volume adjustment failed: Current value {X}"
+- "Quality change unavailable: Requested {X}, Available {Y}"
+- "Captions not displayed: Status {X}"
+- "Full-screen mode not functioning: Component {X}"
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+const usabilityTest = require('../utils/usabilityTest');
+
+describe('Usability Requirements - UI and Video Player Controls', function () {
+    it('should adjust UI for different screen sizes', async function () {
+        const screenSizes = ['mobile', 'tablet', 'desktop'];
+        for (const size of screenSizes) {
+            try {
+                const uiCheck = await usabilityTest.checkUIAccessibility(size);
+                
+                if (!uiCheck.success) {
+                    throw new Error(`UI accessibility issues on ${size}: ${uiCheck.issues}`);
+                }
+
+                console.log(`UI is responsive and functional on ${size}`);
+            } catch (error) {
+                console.error(`UI test failed for ${size}:`, error.message);
+                throw error;
+            }
+        }
+    });
+
+    it('should support video player controls', async function () {
+        const controls = ['volume', 'quality', 'captions', 'full-screen'];
+        for (const control of controls) {
+            try {
+                const controlCheck = await usabilityTest.testVideoControl(control);
+
+                if (!controlCheck.success) {
+                    throw new Error(`${control} control failed: ${controlCheck.issue}`);
+                }
+
+                console.log(`${control} control passed`);
+            } catch (error) {
+                console.error(`${control} control test failed:`, error.message);
+                throw error;
+            }
+        }
+    });
+});
+```
+
+## 3.4 Scalability Testing
+## Feature: Horizontal Scalability
+### Scenario: Increasing Users and Video Content
+#### Given:
+- The platform experiences an increase in concurrent users
+- Additional video content is uploaded
+#### When:
+- New users log in, or video content is accessed
+#### Then:
+- The system must handle the load without performance degradation
+- Response times must remain within acceptable limits
+#### Error Messages:
+- "User connection timeout: Concurrent users {X}"
+- "Video upload failed: File {X}, Size {Y}"
+- "Server overload detected: Current load {X}"
+
+## Feature: Scalable CDN Integration
+### Scenario: High-Quality Video Delivery
+#### Given:
+- The platform is serving video content globally
+- A CDN is used for delivery
+#### When:
+- Users request video playback
+#### Then:
+- The CDN must deliver videos without buffering
+- Delivery must adapt to network conditions
+#### Error Messages:
+- "CDN delivery failure: Region {X}, Video {Y}"
+- "High buffering time detected: Video {X}, User location {Y}"
+- "Unsupported network condition detected: Network {X}"
+```javascript
+const scalabilityTest = require('../utils/scalabilityTest');
+
+describe('Scalability Requirements - Horizontal Scaling and CDN Integration', function () {
+    it('should handle increased users and video content', async function () {
+        try {
+            const loadTest = await scalabilityTest.simulateLoad({ users: 1000, videos: 500 });
+
+            if (!loadTest.success) {
+                throw new Error(`Scalability issues detected: ${loadTest.issues}`);
+            }
+
+            console.log('System scaled successfully for increased load');
+        } catch (error) {
+            console.error('Horizontal scaling test failed:', error.message);
+            throw error;
+        }
+    });
+
+    it('should deliver videos efficiently via CDN', async function () {
+        try {
+            const cdnTest = await scalabilityTest.testCDNPerformance();
+
+            if (!cdnTest.success) {
+                throw new Error(`CDN issues detected: ${cdnTest.issues}`);
+            }
+
+            console.log('CDN delivered videos efficiently');
+        } catch (error) {
+            console.error('CDN integration test failed:', error.message);
+            throw error;
+        }
+    });
+});
+```
