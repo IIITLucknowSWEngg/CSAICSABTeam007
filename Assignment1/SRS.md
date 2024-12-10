@@ -33,10 +33,9 @@ The YouTube clone is a web and mobile-based application that provides users with
 - **Comments and Likes**: Users can comment on videos and like/dislike content.
 - **Content Search**: A search functionality allows users to find videos based on keywords, categories, or tags.
 - **Video Analytics**: Content creators can view analytics such as views, likes, and engagement metrics.
-- **Monetization**: Content creators can monetize their content through ads, sponsorships, or subscriptions.
 - **Playlists**: Users can create and manage video playlists.
 - **Video Categories**: Videos are organized into different genres and categories.
-- **Live Streaming**: Content creators can broadcast live videos to their audience.
+
 
 ### 2.3 User Classes and Characteristics
 - **Viewers**: Users who watch videos, comment, and subscribe to channels.
@@ -56,7 +55,6 @@ The YouTube clone is a web and mobile-based application that provides users with
 ### 2.6 Assumptions and Dependencies
 - Users will have high-speed internet access for streaming videos.
 - CDN and video encoding services will be available to handle the large volume of video content.
-- Video monetization will depend on third-party ad providers and payment gateways.
 
 ---
 
@@ -95,13 +93,9 @@ The YouTube clone is a web and mobile-based application that provides users with
 - **FR-18**: Content creators can access detailed analytics, including views, watch time, likes, dislikes, and comments.
 - **FR-19**: Creators can track revenue from ads, sponsorships, or subscriptions.
 
-### 3.8 Monetization and Payment
-- **FR-20**: Creators can opt into monetization programs (ads, subscriptions).
-- **FR-21**: Payment gateways like Stripe or PayPal will be integrated to process payments.
-
-### 3.9 Admin Panel
-- **FR-22**: Platform admins can manage user accounts, content policies, and moderate videos flagged by users.
-- **FR-23**: Admins can access platform-wide statistics, including the number of active users, uploads, and server usage.
+### 3.8 Admin Panel
+- **FR-20**: Platform admins can manage user accounts, content policies, and moderate videos flagged by users.
+- **FR-21**: Admins can access platform-wide statistics, including the number of active users, uploads, and server usage.
 
 ---
 
