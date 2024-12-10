@@ -1,4 +1,35 @@
+# Stakeholders Classification
 
+## Internal Stakeholders
+| Stakeholder | Primary Responsibilities | Impact Level |
+|-------------|-------------------------|--------------|
+| Project Sponsor | Strategic direction, financial resources | High |
+| Project Manager | Project planning, coordination, execution | High |
+| Development Team | Software development, implementation | High |
+| UI/UX Designers | User interface and experience design | Medium |
+| Quality Assurance (QA) Team | Testing, quality control | High |
+| Product Owner | Feature prioritization, requirements management | High |
+| Administrators/Moderators | Platform operations, content moderation | High |
+| Machine Learning Engineers | AI-driven features, recommendation systems | High |
+| Monetization Team | Revenue generation strategies | High |
+| Security Specialists | Cybersecurity, data protection | High |
+| Data Analysts | Performance and user behavior analysis | Medium |
+| Marketing Team | Platform promotion, user acquisition | Medium |
+| Customer Support Team | User issue resolution | Medium |
+| Legal and Compliance Team | Regulatory adherence | Medium |
+| Accessibility Experts | Platform inclusivity | Medium |
+| Community Managers | User engagement, community building | Medium |
+
+## External Stakeholders
+| Stakeholder | Primary Interests | Impact Level |
+|-------------|-------------------|--------------|
+| Content Creators | Platform for content distribution, monetization | High |
+| End Users | Video consumption, platform usability | High |
+| Advertisers | Marketing opportunities, audience reach | Medium |
+| Technology Providers | Infrastructure, tools, services | Medium |
+| Regulatory Bodies | Compliance, legal standards | Medium |
+| Potential Investors | Platform potential, growth prospects | High |
+| Media and Press | Platform coverage, public perception | Medium |
 # Stakeholders
 
 ## Overview
