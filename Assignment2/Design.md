@@ -64,9 +64,9 @@ The platform will include advanced capabilities:
 
 ## 4.1 Frontend Architecture
 
-![System achitecture](/Assignment2/Diagram/frontend-arch.png)
+![System achitecture](Diagram/frontend-arch.png)
 
-```plantuml
+```
 @startuml
 !theme plain
 title YouTube Clone - Frontend Architecture
@@ -213,9 +213,9 @@ end note
 - **Error Boundary Management**: Graceful error handling and user notifications
 
 ## 4.2 Backend System Architecture
-![System achitecture](/Assignment2/Diagram/backend-arch.png)
+![System achitecture](Diagram/backend-arch.png)
 
-```plantuml
+```
 @startuml
 !define DARKBLUE
 !includeurl https://raw.githubusercontent.com/Argonaut-B04/PlantUML-style-C4/master/style.puml
@@ -471,7 +471,7 @@ Monitoring --> Dashboard : Visualize Metrics
 - A/B testing capabilities
 
 
-## 5. Database Design
+# 5. Database Design
 The YouTube clone uses a combination of SQL and NoSQL databases. Below is the schema for major entities:
 
 - **Users**: Stores user information like username, email, and preferences.
@@ -565,11 +565,11 @@ rectangle YouTube {
 @enduml
 ```
 
-## 6. Interface Design
+# 6. Interface Design
 
-![interface design](/Assignment2/Diagram/Interface-design.png)
+![interface design](Diagram/Interface-design.png)
 
-```plantuml
+```
 @startuml
 skinparam linetype polyline
 title YouTube Clone - Interface Design
@@ -660,10 +660,7 @@ Below are some of the REST API endpoints for interaction:
 - **Analytics Tools**: Tracks user interactions and performance metrics.
 - **Search Engine**: Provides fast and accurate search results.
 
-### 6.3 Notification Flow Diagram
-This diagram represents the flow of notifications for events like new comments or video uploads.
-
-## 7. Non-Functional Requirements
+# 7. Non-Functional Requirements
 ### 7.1 Performance
 - Support for 100,000 simultaneous users with peak load handling
 - Maximum video load time: 2 seconds for standard definition
@@ -722,7 +719,105 @@ This diagram represents the flow of notifications for events like new comments o
 - User consent management
 - Right to be forgotten implementation
 
-## 8. Conclusion
+# 8. Software and Browser Compatibility
+
+## 8.1 Web Browser Support
+
+### 8.1.1 Desktop Browsers
+- **Google Chrome**: 
+  - Supported Versions: 90 and above
+  - Recommended: Latest stable version
+- **Mozilla Firefox**: 
+  - Supported Versions: 88 and above
+  - Recommended: Latest stable version
+- **Microsoft Edge**: 
+  - Supported Versions: 90 and above
+  - Recommended: Latest stable version
+- **Safari**: 
+  - Supported Versions: 14 and above
+  - Recommended: Latest stable version
+- **Opera**: 
+  - Supported Versions: 76 and above
+  - Recommended: Latest stable version
+
+### 8.1.2 Mobile Browsers
+- **Chrome for Android**: 
+  - Supported Versions: 90 and above
+  - Recommended: Latest stable version
+- **Safari for iOS**: 
+  - Supported Versions: 14 and above
+  - Recommended: Latest stable version
+- **Samsung Internet**: 
+  - Supported Versions: 14 and above
+  - Recommended: Latest stable version
+
+## 8.2 Mobile Platform Support
+
+### 8.2.1 Mobile Operating Systems
+- **Android**:
+  - Minimum Version: 8.0 (Oreo)
+  - Recommended: Android 11 and newer
+- **iOS**:
+  - Minimum Version: 14
+  - Recommended: iOS 15 and newer
+
+## 8.3 Desktop Operating System Support
+
+### 8.3.1 Windows
+- Windows 10 (Version 1909 and above)
+- Windows 11
+
+### 8.3.2 macOS
+- macOS Big Sur (11.0) and above
+- Recommended: macOS Monterey (12.0) and newer
+
+### 8.3.3 Linux
+- Ubuntu 20.04 LTS and above
+- Fedora 34 and above
+
+## 8.4 Performance Baseline Requirements
+
+### 8.4.1 Screen Resolution
+- Minimum: 1280x720 (720p)
+- Recommended: 1920x1080 (1080p)
+
+### 8.4.2 Internet Speed Requirements
+- Standard Definition (SD) Video: 2 Mbps
+- High Definition (HD) Video: 5 Mbps
+- 4K Video: 25 Mbps
+
+## 8.5 Progressive Enhancement and Fallback Strategies
+
+### 8.5.1 Browser Compatibility
+- Implement graceful degradation for older browsers
+- Provide alternative content for unsupported environments
+- Display clear user notifications about browser/version incompatibility
+
+## 8.6 Accessibility Considerations
+
+### 8.6.1 Web Content Accessibility Guidelines (WCAG)
+- Comply with WCAG 2.1 Level AA standards
+- Support for screen readers
+- Full keyboard navigation
+- Appropriate color contrast
+- Text resizing support
+
+## 8.7 Testing and Verification
+
+### 8.7.1 Compatibility Testing
+- Regular cross-browser testing
+- Automated compatibility checks
+- Manual testing on supported platforms
+- Continuous integration (CI) compatibility tests
+
+### 8.7.2 Update Frequency
+- Review and update compatibility matrix quarterly
+- Adjust supported versions based on market share and user analytics
+
+## 8.8 Disclaimer
+Platform compatibility is subject to change. Users are encouraged to maintain updated browsers and operating systems for the best experience.
+
+# 9. Conclusion
 This comprehensive Software Design Description provides a thorough blueprint for a robust, scalable, and user-centric video streaming platform. By leveraging modern architectural principles, microservices design, and advanced technologies, the YouTube clone system is engineered to:
 
 - Handle massive concurrent user loads
