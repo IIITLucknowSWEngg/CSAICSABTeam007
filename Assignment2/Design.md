@@ -44,25 +44,9 @@ The YouTube clone will utilize a distributed, microservices-based architecture w
   - Search functionality: Elasticsearch
   - File storage: Distributed cloud storage
 
-## 3. System Capabilities
-### 3.1 Advanced Features
-The platform will include advanced capabilities:
+# 3. Module Design
 
-#### 3.1.1 Machine Learning Integration
-- Personalized content recommendation
-- Automated content moderation
-- Viewer behavior prediction
-- Trend analysis and insights
-
-#### 3.1.2 Real-time Capabilities
-- WebSocket-based live streaming
-- Real-time commenting system
-- Instant notifications
-- Interactive live events support
-
-# 4. Module Design
-
-## 4.1 Frontend Architecture
+## 3.1 Frontend Architecture
 
 ![System achitecture](/Assignment2/Diagram/frontend-arch.png)
 
@@ -175,13 +159,13 @@ end note
 @enduml
 ```
 
-### 4.1.1 Architectural Overview
+### 3.1.1 Architectural Overview
 - **Modular Component-Based Design**: Utilizing React/Next.js for scalable frontend architecture
 - **Responsive Design**: Adaptive layout for web and mobile platforms
 - **State Management**: Implementing Redux/Context API for global state management
 - **Performance Optimization**: Code splitting, lazy loading, and efficient rendering
 
-### 4.1.2 User Interface Modules
+### 3.1.2 User Interface Modules
 #### 1. Authentication Module
 - Login/Registration interfaces
 - Social media authentication
@@ -206,13 +190,13 @@ end note
 - Watch history and saved playlists
 - Channel customization options
 
-### 4.1.3 Client-Side Processing
+### 3.1.3 Client-Side Processing
 - **Local Caching**: Implementing browser storage for performance
 - **Offline Support**: Service worker integration
 - **Real-time Updates**: WebSocket connections for live interactions
 - **Error Boundary Management**: Graceful error handling and user notifications
 
-## 4.2 Backend System Architecture
+## 3.2 Backend System Architecture
 ![System achitecture](/Assignment2/Diagram/backend-arch.png)
 
 ```plantuml
@@ -348,12 +332,12 @@ Monitoring --> Dashboard : Visualize Metrics
 @enduml
 ```
 
-### 4.2.1 Distributed Service Ecosystem
+### 3.2.1 Distributed Service Ecosystem
 - **Microservices Architecture**: Independently scalable services
 - **Event-Driven Communication**: Kafka/RabbitMQ for inter-service messaging
 - **Service Discovery**: Consul/Kubernetes for dynamic service registration
 
-### 4.2.2 Authentication and Security Layer
+### 3.2.2 Authentication and Security Layer
 #### 1. Identity Management
 - JWT-based authentication
 - Role-based access control
@@ -366,7 +350,7 @@ Monitoring --> Dashboard : Visualize Metrics
 - Cross-Site Scripting (XSS) prevention
 - SQL injection safeguards
 
-### 4.2.3 Content Management Services
+### 3.2.3 Content Management Services
 #### 1. Video Processing Service
 - Multi-format video transcoding
 - Adaptive bitrate streaming
@@ -380,20 +364,7 @@ Monitoring --> Dashboard : Visualize Metrics
 - Efficient storage tiering
 - Backup and disaster recovery
 
-### 4.2.4 Recommendation and Discovery Engine
-#### 1. Machine Learning Models
-- Collaborative filtering
-- Content-based recommendation
-- Hybrid recommendation algorithms
-- User behavior analysis
-
-#### 2. Personalization Mechanisms
-- Real-time preference tracking
-- Contextual recommendation
-- A/B testing recommendation strategies
-- Diversity and serendipity in suggestions
-
-### 4.2.5 Interaction and Engagement Services
+### 3.2.5 Interaction and Engagement Services
 #### 1. User Interaction Tracking
 - Like, comment, and share mechanisms
 - Notification dispatch system
@@ -406,72 +377,26 @@ Monitoring --> Dashboard : Visualize Metrics
 - Community content curation
 - Collaborative viewing experiences
 
-## 4.3 Cross-Cutting Concerns
-### 4.3.1 Observability and Monitoring
+## 3.3 Cross-Cutting Concerns
+### 3.3.1 Observability and Monitoring
 - Distributed tracing
 - Performance metrics collection
 - Log aggregation
 - Real-time alerting systems
 
-### 4.3.2 Scalability Strategies
+### 3.3.2 Scalability Strategies
 - Horizontal service scaling
 - Load balancing
 - Caching mechanisms
 - Auto-scaling configuration
 
-### 4.3.3 Compliance and Privacy
+### 3.3.3 Compliance and Privacy
 - GDPR compliance
 - Data anonymization
 - User consent management
 - Transparent data handling
 
-## 4.4 Advertising Ecosystem
-
-### 4.4.1 Ad Targeting Strategy
-- Demographic-based targeting
-- Interest and behavior profiling
-- Geographic location targeting
-- Device-specific ad delivery
-
-### 4.4.2 Ad Placement Types
-1. Video Ad Formats
-- Pre-roll ads
-- Mid-roll ads
-- Post-roll ads
-- Overlay advertisements
-
-2. Additional Placement Channels
-- Sidebar recommendations
-- Banner advertisements
-- Sponsored content sections
-
-### 4.4.3 Revenue Generation
-- Impression-based pricing (CPM)
-- Performance-based pricing (CPC)
-- Revenue sharing with content creators
-- Conversion tracking
-
-### 4.4.4 Compliance and User Experience
-- User ad preference settings
-- Opt-out mechanisms
-- Ad frequency capping
-- Content moderation
-- Brand safety filters
-
-### 4.4.5 Technical Infrastructure
-- Low-latency ad delivery
-- Real-time bidding integration
-- Fraud detection mechanisms
-- Cross-platform ad compatibility
-
-### 4.4.6 Advertiser Tools
-- Self-service ad creation platform
-- Campaign management dashboard
-- Performance analytics
-- A/B testing capabilities
-
-
-## 5. Database Design
+## 4. Database Design
 The YouTube clone uses a combination of SQL and NoSQL databases. Below is the schema for major entities:
 
 - **Users**: Stores user information like username, email, and preferences.
@@ -565,7 +490,7 @@ rectangle YouTube {
 @enduml
 ```
 
-## 6. Interface Design
+## 5. Interface Design
 
 ![interface design](/Assignment2/Diagram/Interface-design.png)
 
@@ -648,31 +573,31 @@ end note
 @enduml
 ```
 
-### 6.1 API Design
+### 5.1 API Design
 Below are some of the REST API endpoints for interaction:
 
 - **POST /upload**: Upload a video.
 - **GET /videos**: Fetch video recommendations.
 - **POST /comments**: Add a comment to a video.
 
-### 6.2 External System Interfaces
+### 5.2 External System Interfaces
 - **CDN**: Delivers video content to users efficiently.
 - **Analytics Tools**: Tracks user interactions and performance metrics.
 - **Search Engine**: Provides fast and accurate search results.
 
-### 6.3 Notification Flow Diagram
+### 5.3 Notification Flow Diagram
 This diagram represents the flow of notifications for events like new comments or video uploads.
 
-## 7. Non-Functional Requirements
-### 7.1 Performance
+## 6. Non-Functional Requirements
+### 6.1 Performance
 - Support for 100,000 simultaneous users with peak load handling
-- Maximum video load time: 2 seconds for standard definition
-- Maximum video start time: 1 second for adaptive streaming
+- Maximum video load time: 10 seconds for standard definition
+- Maximum video start time: 3 second for adaptive streaming
 - Content delivery network (CDN) response time under 50 milliseconds
 - Efficient resource utilization with less than 70% CPU and memory load during peak traffic
 - Support for 4K and 8K video streaming with adaptive bitrate technology
 
-### 7.2 Scalability
+### 6.2 Scalability
 - Horizontal scaling capabilities for all backend services
 - Microservices architecture supporting independent scaling
 - Automatic horizontal scaling based on real-time traffic metrics
@@ -681,7 +606,7 @@ This diagram represents the flow of notifications for events like new comments o
 - Load balancing across multiple server instances
 - Elastic database scaling with read replicas and sharding mechanisms
 
-### 7.3 Availability
+### 6.3 Accessibility
 - 99.9% system uptime guarantee
 - Redundant component architecture
 - Multi-region failover support
@@ -691,7 +616,7 @@ This diagram represents the flow of notifications for events like new comments o
 - Geographically distributed data centers for continuous operation
 - Backup and disaster recovery strategies
 
-### 7.4 Security
+### 6.4 Security
 - End-to-end encryption for all sensitive data
 - Multi-factor authentication
 - Role-based access control (RBAC)
@@ -705,24 +630,7 @@ This diagram represents the flow of notifications for events like new comments o
 - Secure API design with token-based authentication
 - Advanced threat detection and prevention mechanisms
 
-### 7.5 Reliability
-- Automatic error detection and logging
-- Graceful error handling
-- Circuit breaker pattern implementation
-- Comprehensive monitoring and alerting system
-- Detailed performance and error reporting
-- Automatic rollback of problematic deployments
-
-### 7.6 Compliance
-- GDPR compliance for user data protection
-- CCPA data privacy regulations
-- COPPA guidelines for content involving minors
-- Accessibility standards (WCAG 2.1)
-- Transparent data usage policies
-- User consent management
-- Right to be forgotten implementation
-
-## 8. Conclusion
+## 7. Conclusion
 This comprehensive Software Design Description provides a thorough blueprint for a robust, scalable, and user-centric video streaming platform. By leveraging modern architectural principles, microservices design, and advanced technologies, the YouTube clone system is engineered to:
 
 - Handle massive concurrent user loads
