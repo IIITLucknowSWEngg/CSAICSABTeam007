@@ -606,7 +606,7 @@ This diagram represents the flow of notifications for events like new comments o
 - Load balancing across multiple server instances
 - Elastic database scaling with read replicas and sharding mechanisms
 
-### 6.3 Accessibility
+### 6.3 Usability
 - 99.9% system uptime guarantee
 - Redundant component architecture
 - Multi-region failover support
