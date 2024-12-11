@@ -254,63 +254,7 @@ describe('Content Creator - View Analytics', function() {
 ```
 ---
 
-## 2.3 Feature: Content Creator Earnings View
-
-### Scenario: Verify Earnings Dashboard Details
-
-#### Given:
-- The content creator is logged into YouTube Studio
-- The content creator is on the Earnings page
-
-#### When:
-- The content creator clicks on the "Earnings" tab
-
-#### Then:
-- Total earnings should be visible
-- Total earnings should display in correct currency format
-- Revenue sources section should be displayed
-- At least one revenue source should exist
-- Payment history table should be visible
-- Payment history table should have at least one entry
-
-```javascript
-import { expect } from 'chai';
-
-describe('Content Creator Earnings View', () => {
-  let page;
-
-  beforeEach(async () => {
-    page = await browser.newPage();
-    await page.goto('https://studio.youtube.com/earnings');
-    await page.login('contentcreator@example.com', 'securePassword');
-  });
-
-  afterEach(async () => {
-    await page.close();
-  });
-
-  it('should display earnings information when Earnings tab is clicked', async () => {
-    await page.click('[data-testid="earnings-tab"]');
-
-    const totalEarningsElement = await page.locator('[data-testid="total-earnings"]');
-    expect(await totalEarningsElement.isVisible()).to.be.true;
-    expect(await totalEarningsElement.textContent()).to.match(/^\$\d+(\.\d{1,2})?$/);
-
-    const revenueSources = await page.locator('[data-testid="revenue-sources"]');
-    expect(await revenueSources.isVisible()).to.be.true;
-    const sourceItems = await revenueSources.$$('[data-testid="revenue-source-item"]');
-    expect(sourceItems.length).to.be.greaterThan(0);
-
-    const paymentHistoryTable = await page.locator('[data-testid="payment-history-table"]');
-    expect(await paymentHistoryTable.isVisible()).to.be.true;
-    const paymentRows = await paymentHistoryTable.$$('tr');
-    expect(paymentRows.length).to.be.greaterThan(0);
-  });
-});
-```
----
-
-## 2.4 Feature: Content Creator - Edit Video
+## 2.3 Feature: Content Creator - Edit Video
 ### Scenario: Content Creator edits a video after upload
 
 #### Given:
@@ -431,7 +375,7 @@ class VideoItem {
 module.exports = new StudioPage();
 ```
 
-## 2.5 Feature: Content Creator - View Comments
+## 2.4 Feature: Content Creator - View Comments
 ### Scenario: Content Creator views comments on a video
 
 #### Given:
@@ -567,7 +511,7 @@ class Comment {
 }
 ```
 ---
-## 2.6 Feature: Content Creator - Delete Video
+## 2.5 Feature: Content Creator - Delete Video
 ### Scenario: Content Creator deletes a video
 
 #### Given:
@@ -692,75 +636,6 @@ class DeleteConfirmationDialog {
 }
 ```
 ---
-
-## 2.7 Feature: Content Creator - Monetize Video
-### Scenario: Content Creator monetizes a video
-
-#### Given:
-- The content creator is logged in
-- The content creator has enabled monetization in their YouTube account settings
-
-#### When:
-- The content creator clicks on the "Monetize" button for a specific video
-
-#### Then:
-- The video should be monetized and show ads to viewers
-
-```javascript
-const chai = require('chai');
-const expect = chai.expect;
-const studioPage = require('../pages/studioPage');
-
-describe('Content Creator - Monetize Video', function() {
-  beforeEach(async function() {
-    studioPage.open();
-    studioPage.login('contentcreator@example.com', 'securePassword');
-  });
-
-  it('should monetize an eligible video', async function() {
-    // Find first uploaded video
-    const firstVideo = studioPage.getFirstUploadedVideo();
-
-    // Check video eligibility for monetization
-    const monetizationEligibility = await firstVideo.checkMonetizationEligibility();
-    expect(monetizationEligibility.isEligible).to.be.true;
-
-    // Monetize the video
-    firstVideo.monetize();
-
-    // Verify monetization status
-    const updatedMonetizationStatus = await firstVideo.getMonetizationStatus();
-    expect(updatedMonetizationStatus).to.equal('Monetized');
-  });
-
-  it('should handle video not eligible for monetization', async function() {
-    const firstVideo = studioPage.getFirstUploadedVideo();
-
-    // Check video eligibility
-    const monetizationEligibility = await firstVideo.checkMonetizationEligibility();
-    
-    if (!monetizationEligibility.isEligible) {
-      // Attempt to monetize and verify error
-      const monetizationResult = firstVideo.monetize();
-      expect(monetizationResult.success).to.be.false;
-      expect(monetizationResult.errorMessage).to.exist;
-    }
-  });
-
-  it('should verify ads are displayed after monetization', async function() {
-    const firstVideo = studioPage.getFirstUploadedVideo();
-    
-    // Ensure video is monetized
-    if (await firstVideo.getMonetizationStatus() !== 'Monetized') {
-      firstVideo.monetize();
-    }
-
-    // Verify ads on video playback
-    const videoPlaybackDetails = await studioPage.playVideoAndCheckAds(firstVideo.getId());
-    expect(videoPlaybackDetails.adsDisplayed).to.be.true;
-  });
-});
-```
 # 3. Non Functional Requirement Testing
 ## 3.1 Performance Testing
 ## Feature: Concurrent Video Streaming
