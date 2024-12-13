@@ -1,44 +1,54 @@
 # Software Design Description (SDD)
-## 1. Introduction
 
-### 1.1 Purpose
+# 1. Introduction
+
+## 1.1 Purpose
+
 The purpose of this Software Design Description (SDD) is to provide a detailed design for the YouTube clone video streaming platform. This document describes the software's architecture, components, interfaces, and their interactions to ensure that the implementation meets the system's functional and non-functional requirements.
 
-### 1.2 Scope
+## 1.2 Scope
+
 The YouTube clone system enables users to upload, view, and interact with video content via a web or mobile application. The platform supports video streaming, user interaction (likes, comments), and content management. The system includes the frontend application, backend API services, real-time communication, and integration with external services like content delivery networks (CDNs) and analytics tools.
 
-### 1.3 Design Goals
+## 1.3 Design Goals
+
 The design aims to achieve the following objectives:
+
 - Create a scalable and high-performance video streaming platform
 - Provide an intuitive and responsive user experience
 - Implement robust security and privacy measures
 - Enable seamless content discovery and interaction
 - Support cross-platform functionality
 
-### 1.4 Architectural Principles
+## 1.4 Architectural Principles
+
 The system design follows these key architectural principles:
+
 - Microservices architecture for modularity and scalability
 - Event-driven design for real-time interactions
 - Loosely coupled components to ensure system flexibility
 - Containerization for consistent deployment
 - Cloud-native implementation
 
-## 2. System Architecture
-### 2.1 Architecture Overview
+# 2. System Architecture
+
+## 2.1 Architecture Overview
+
 The YouTube clone will utilize a distributed, microservices-based architecture with the following key layers:
 
 - **Presentation Layer**:
+
   - React for web application
   - React Native for mobile applications
   - Server-side rendering for improved performance
   - Progressive Web App (PWA) support
-
 - **Application Layer**:
+
   - Microservices using Node.js and Express
   - GraphQL API for flexible data querying
   - gRPC for efficient inter-service communication
-
 - **Data Layer**:
+
   - Primary database: MongoDb
   - Caching layer: Redis
   - Search functionality: Elasticsearch
@@ -48,9 +58,9 @@ The YouTube clone will utilize a distributed, microservices-based architecture w
 
 ## 3.1 Frontend Architecture
 
-![System achitecture](/Assignment2/Diagram/frontend-arch.png)
+![System achitecture](Diagram/frontend-arch.png)
 
-```plantuml
+```
 @startuml
 !theme plain
 title YouTube Clone - Frontend Architecture
@@ -67,7 +77,7 @@ package "Frontend Application" {
         [Redux Store] as ReduxStore
         [Action Creators] as Actions
         [Reducers] as Reducers
-        
+      
         folder "Slices" {
             [User Slice] as UserSlice
             [Video Slice] as VideoSlice
@@ -160,46 +170,54 @@ end note
 ```
 
 ### 3.1.1 Architectural Overview
+
 - **Modular Component-Based Design**: Utilizing React/Next.js for scalable frontend architecture
 - **Responsive Design**: Adaptive layout for web and mobile platforms
 - **State Management**: Implementing Redux/Context API for global state management
 - **Performance Optimization**: Code splitting, lazy loading, and efficient rendering
 
 ### 3.1.2 User Interface Modules
+
 #### 1. Authentication Module
+
 - Login/Registration interfaces
 - Social media authentication
 - Password recovery workflows
 - Multi-factor authentication support
 
 #### 2. Content Discovery Module
+
 - Personalized recommendation grid
 - Trending and categorized content sections
 - Advanced search and filtering mechanisms
 - Content carousel and horizontal scrolling views
 
 #### 3. Video Interaction Module
+
 - Adaptive video player
 - Interactive engagement tools (likes, comments, shares)
 - Fullscreen and Picture-in-Picture modes
 - Quality and playback speed controls
 
 #### 4. User Profile Module
+
 - Comprehensive profile management
 - Content upload capabilities
 - Watch history and saved playlists
 - Channel customization options
 
 ### 3.1.3 Client-Side Processing
+
 - **Local Caching**: Implementing browser storage for performance
 - **Offline Support**: Service worker integration
 - **Real-time Updates**: WebSocket connections for live interactions
 - **Error Boundary Management**: Graceful error handling and user notifications
 
 ## 3.2 Backend System Architecture
-![System achitecture](/Assignment2/Diagram/backend-arch.png)
 
-```plantuml
+![System achitecture](Diagram/backend-arch.png)
+
+```
 @startuml
 !define DARKBLUE
 !includeurl https://raw.githubusercontent.com/Argonaut-B04/PlantUML-style-C4/master/style.puml
@@ -226,11 +244,11 @@ frame "Video Processing Microservices" {
     [Video Upload Service] as UploadService
     [Video Encoding Service] as EncodingService
     [Thumbnail Generation Service] as ThumbnailService
-    
+  
     database "Video Metadata DB" {
         [PostgreSQL - Video Metadata] as VideoMetadataDB
     }
-    
+  
     storage "Video Storage" {
         [Distributed File Storage] as VideoStorage
     }
@@ -244,12 +262,12 @@ frame "Content Services" {
     [Video Recommendation Service] as RecommendationService
     [Search Service] as SearchService
     [Analytics Service] as AnalyticsService
-    
+  
     database "Redis Caches" {
         [View Count Cache] as ViewCache
         [Recommendation Cache] as RecommendCache
     }
-    
+  
     database "Elasticsearch" {
         [Video Search Index] as SearchIndex
     }
@@ -258,7 +276,7 @@ frame "Content Services" {
 frame "Social Interaction Services" {
     [Comment Service] as CommentService
     [Interaction Service] as InteractionService
-    
+  
     database "Interaction Database" {
         [Cassandra - Likes/Comments] as InteractionDB
     }
@@ -333,25 +351,31 @@ Monitoring --> Dashboard : Visualize Metrics
 ```
 
 ### 3.2.1 Distributed Service Ecosystem
+
 - **Microservices Architecture**: Independently scalable services
 - **Event-Driven Communication**: Kafka/RabbitMQ for inter-service messaging
 - **Service Discovery**: Consul/Kubernetes for dynamic service registration
 
 ### 3.2.2 Authentication and Security Layer
+
 #### 1. Identity Management
+
 - JWT-based authentication
 - Role-based access control
 - OAuth 2.0 and OpenID Connect support
 - Passwordless authentication options
 
 #### 2. Security Mechanisms
+
 - Encrypted token storage
 - Brute-force protection
 - Cross-Site Scripting (XSS) prevention
 - SQL injection safeguards
 
 ### 3.2.3 Content Management Services
+
 #### 1. Video Processing Service
+
 - Multi-format video transcoding
 - Adaptive bitrate streaming
 - Thumbnail generation
@@ -359,44 +383,53 @@ Monitoring --> Dashboard : Visualize Metrics
 - Content moderation
 
 #### 2. Storage Management
+
 - Distributed file storage (AWS S3/Google Cloud Storage)
 - Content Delivery Network (CDN) integration
 - Efficient storage tiering
 - Backup and disaster recovery
 
 ### 3.2.5 Interaction and Engagement Services
+
 #### 1. User Interaction Tracking
+
 - Like, comment, and share mechanisms
 - Notification dispatch system
 - Engagement metrics collection
 - Community interaction workflows
 
 #### 2. Social Features
+
 - Follow/subscribe functionality
 - User-generated playlists
 - Community content curation
 - Collaborative viewing experiences
 
 ## 3.3 Cross-Cutting Concerns
+
 ### 3.3.1 Observability and Monitoring
+
 - Distributed tracing
 - Performance metrics collection
 - Log aggregation
 - Real-time alerting systems
 
 ### 3.3.2 Scalability Strategies
+
 - Horizontal service scaling
 - Load balancing
 - Caching mechanisms
 - Auto-scaling configuration
 
 ### 3.3.3 Compliance and Privacy
+
 - GDPR compliance
 - Data anonymization
 - User consent management
 - Transparent data handling
 
-## 4. Database Design
+# 4. Database Design
+
 The YouTube clone uses a combination of SQL and NoSQL databases. Below is the schema for major entities:
 
 - **Users**: Stores user information like username, email, and preferences.
@@ -404,9 +437,10 @@ The YouTube clone uses a combination of SQL and NoSQL databases. Below is the sc
 - **Comments**: Stores user comments and associated metadata.
 - **Interactions**: Tracks likes, views, and subscriptions.
 
-<image src="./Diagram/database-design.png"/>
+<image src="Diagram/database-design.png"/>
 
 #### Plantuml code
+
 ```
 @startuml
 left to right direction
@@ -490,11 +524,11 @@ rectangle YouTube {
 @enduml
 ```
 
-## 5. Interface Design
+# 5. Interface Design
 
-![interface design](/Assignment2/Diagram/Interface-design.png)
+![interface design](Diagram/Interface-design.png)
 
-```plantuml
+```
 @startuml
 skinparam linetype polyline
 title YouTube Clone - Interface Design
@@ -574,6 +608,7 @@ end note
 ```
 
 ### 5.1 API Design
+
 Below are some of the REST API endpoints for interaction:
 
 - **POST /upload**: Upload a video.
@@ -581,15 +616,19 @@ Below are some of the REST API endpoints for interaction:
 - **POST /comments**: Add a comment to a video.
 
 ### 5.2 External System Interfaces
+
 - **CDN**: Delivers video content to users efficiently.
 - **Analytics Tools**: Tracks user interactions and performance metrics.
 - **Search Engine**: Provides fast and accurate search results.
 
 ### 5.3 Notification Flow Diagram
+
 This diagram represents the flow of notifications for events like new comments or video uploads.
 
-## 6. Non-Functional Requirements
-### 6.1 Performance
+# 6. Non-Functional Requirements
+
+## 6.1 Performance
+
 - Support for 100,000 simultaneous users with peak load handling
 - Maximum video load time: 10 seconds for standard definition
 - Maximum video start time: 3 second for adaptive streaming
@@ -597,7 +636,8 @@ This diagram represents the flow of notifications for events like new comments o
 - Efficient resource utilization with less than 70% CPU and memory load during peak traffic
 - Support for 4K and 8K video streaming with adaptive bitrate technology
 
-### 6.2 Scalability
+## 6.2 Scalability
+
 - Horizontal scaling capabilities for all backend services
 - Microservices architecture supporting independent scaling
 - Automatic horizontal scaling based on real-time traffic metrics
@@ -606,7 +646,8 @@ This diagram represents the flow of notifications for events like new comments o
 - Load balancing across multiple server instances
 - Elastic database scaling with read replicas and sharding mechanisms
 
-### 6.3 Usability
+## 6.3 Usability
+
 - 99.9% system uptime guarantee
 - Redundant component architecture
 - Multi-region failover support
@@ -616,7 +657,8 @@ This diagram represents the flow of notifications for events like new comments o
 - Geographically distributed data centers for continuous operation
 - Backup and disaster recovery strategies
 
-### 6.4 Security
+## 6.4 Security
+
 - End-to-end encryption for all sensitive data
 - Multi-factor authentication
 - Role-based access control (RBAC)
@@ -630,7 +672,8 @@ This diagram represents the flow of notifications for events like new comments o
 - Secure API design with token-based authentication
 - Advanced threat detection and prevention mechanisms
 
-## 7. Conclusion
+# 7. Conclusion
+
 This comprehensive Software Design Description provides a thorough blueprint for a robust, scalable, and user-centric video streaming platform. By leveraging modern architectural principles, microservices design, and advanced technologies, the YouTube clone system is engineered to:
 
 - Handle massive concurrent user loads
@@ -642,6 +685,7 @@ This comprehensive Software Design Description provides a thorough blueprint for
 The modular design allows for independent scaling of components, while strategic integration with external services enables efficient content delivery, analytics, and user engagement. The platform is not merely a clone but a sophisticated, adaptable video streaming solution capable of competing in the dynamic digital media landscape.
 
 Key differentiators include:
+
 - Flexible microservices architecture
 - Advanced machine learning recommendations
 - Robust security and compliance frameworks
