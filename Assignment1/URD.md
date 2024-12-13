@@ -1,7 +1,7 @@
-# User Requirements Document (URD) for YouTube
+# User Requirements Document (URD) for YouTube Clone
 
 ## 1. Introduction
-YouTube is a video-sharing platform that allows users to upload, view, share, comment on, and interact with videos. This document outlines the functional and non-functional requirements of the platform to ensure a seamless user experience.
+YouTube Clone is a video-sharing platform that allows users to upload, view, share, comment on, and interact with videos. This document outlines the functional and non-functional requirements of the platform to ensure a seamless user experience.
 
 ## 2. Purpose
 The purpose of this URD is to define the key features and functionalities expected from YouTube, ensuring the platform meets user needs effectively.
@@ -116,4 +116,4 @@ The purpose of this URD is to define the key features and functionalities expect
 - **Multi-Language Support**: Add support for additional languages.
 
 ## 8. Conclusion
-This URD outlines the core requirements for YouTube's successful functioning, ensuring it meets the diverse needs of viewers, content creators, advertisers, and moderators. Regular updates and iterations will refine the platform based on evolving user needs.
+This URD outlines the core requirements for YouTube Clone's successful functioning, ensuring it meets the diverse needs of viewers, content creators, advertisers, and moderators. Regular updates and iterations will refine the platform based on evolving user needs.
